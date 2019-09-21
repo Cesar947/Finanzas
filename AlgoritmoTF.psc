@@ -52,9 +52,9 @@ Funcion valorRecibido <- CalculoDelValorRecibido(valorNominal, d, Dscto Por Refe
 	Dscto <- (d/100)*valorNominal
 	valorNeto <- valorNominal - Dscto
 	Escribir "El valor descontado es:"
-	Escribir  Dscto
+	Escribir trunc(Dscto*100)/100
 	Escribir "El valor neto es:"
-	Escribir valorNeto
+	Escribir trunc(valorNeto*100)/100
     pago = 0
 	hayGastosOComisiones = "SI"
     valorRecibido <- valorNeto    
@@ -70,7 +70,11 @@ Funcion valorRecibido <- CalculoDelValorRecibido(valorNominal, d, Dscto Por Refe
 FinFuncion
 
 Funcion valorEntregado <- CalculoDelValorEntregado(valorNominal, Dscto)
+	Escribir "El valor nominal que se tiene que entregar es: "
+	Escribir trunc(valorNominal*100)/100
 	valorEntregado = valorNominal - Dscto 
+	Escribir "El valor entregado otorgando el monto descontado es: "
+	Escribir trunc(valorEntregado*100)/100
 	Escribir "Quiere ingresar algun gasto o comision? (si/no): "
 	Leer hayGastosOComisiones
 	Mientras Mayusculas(hayGastosOComisiones) = "SI" Hacer
@@ -132,11 +136,11 @@ Algoritmo DescuentoComercial
 	
 	
 	Escribir "El valor recibido con las comisiones, gastos, seguros aplicados:"
-	Escribir valorRecibido
+	Escribir trunc(valorRecibido*100)/100
 	
 	valorEntregado <- CalculoDelValorEntregado(valorNominal, Dscto)
 	Escribir "El valor entregado será de: "
-	Escribir valorEntregado
+	Escribir trunc(valorEntregado*100)/100
 	
 	TCEA<-CalculoTasaCosteEfectivaAnual(valorEntregado, valorRecibido, periodoEnDias)
 	Escribir "La tasa de coste efectiva anual es de: "
