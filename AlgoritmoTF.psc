@@ -2,6 +2,41 @@ Funcion TEP <- ConversionTEAaTEP (TEA, periodoEnDias)
 	TEP <- ((1 + TEA/100)^(periodoEnDias/360) - 1)*100
 FinFuncion
 
+Funcion valorEnDias <- ConversionADias(periodo)
+	Si periodo == "diaria" Entonces
+		valorEnDias <- 1
+	FinSi
+	Si periodo == "quincenal" Entonces
+		valorEnDias <- 15
+	FinSi
+	Si periodo == "mensual" Entonces
+		valorEnDias <- 30
+	FinSi
+	Si periodoEnDias == "bimestral" Entonces
+		valorEnDias <- 60
+	FinSi
+	Si periodoEnDias == "trimestral" Entonces
+		valorEnDias <- 90
+	FinSi
+	Si periodoEnDias == "cuatrimestral" Entonces
+		valorEnDias <- 120
+	FinSi
+	Si periodoEnDias == "semestral" Entonces
+		valorEnDias <- 180
+	FinSi
+	Si periodoEnDias == "anual" Entonces
+		valorEnDias <- 360
+	FinSi
+FinFuncion
+
+Funcion TEP <- ConversionTNaTEP (TNP, tipoPeriodo, capitalizacion, periodo)
+    Definir m, n como Reales
+	m = ConversionADias(tipoPeriodo)/ConversionADias(capitalizacion)
+	n = 360/ ConversionADias(capitalizacion)
+	TEA <- (1 + TN/m)^(n) - 1
+	TEP <- ConversionTEAaTEP(TEA, periodo)
+FinFuncion
+
 Funcion d <- CalculoTasaDescontada (TEP)
 	d <- ((TEP/100)/(1 + TEP/100))*100
 FinFuncion
@@ -10,12 +45,29 @@ Funcion TCEA <- CalculoTasaCosteEfectivaAnual(valorEntregado, valorRecibido, per
 	TCEA <- ((valorEntregado/valorRecibido)^(360/periodoEnDias) - 1)*100
 FinFuncion
 
+Funcion DefinirTasaNominal(tipoTasa Por Referencia, tipoPeriodo Por Referencia, capitalizacion Por Referencia)
+	
+	
+    Escribir "Ingrese el tipo de tasa (nominal/efectiva): "
+	Leer tipoTasa
+	Si Mayusculas(tipoTasa) = "NOMINAL" Entonces
+		Escribir "Ingrese el tipo de periodo (mensual, bimestral, etc): "
+		Leer tipoPeriodo
+		Escribir "Ingrese el tipo de capitalización (mensual, bimestral, etc):"
+		Leer capitalizacion
+		
+	FinSi
+	
+FinFuncion
+
 Algoritmo DescuentoComercial
 	
 	//Datos de entrada
-	Definir TEAc, TEP, d, TEAm, TCEA como Reales
+	Definir tipoTasa, TNc, tipoTasaNominal, TEAc, TEP, d, TEAm, TCEA como Reales
 	Definir valorNominal, valorConRetencion, valorNeto, Dscto, valorRecibido, valorEntregado, retencion como Reales
-	Definir periodoEnDias como Real
+	Definir periodoEnDias, tipoPeriodo, capitalizacion como Real
+	
+	Escribir "Se realizará el factoring con tasa nominal o efectiva?"
 	
 	Escribir "Ingrese la tasa efectiva anual compensatoria:"
 	Leer TEAc
