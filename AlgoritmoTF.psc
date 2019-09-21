@@ -72,19 +72,17 @@ FinFuncion
 Funcion valorEntregado <- CalculoDelValorEntregado(valorNominal, Dscto)
 	Escribir "El valor nominal que se tiene que entregar es: "
 	Escribir trunc(valorNominal*100)/100
-	valorEntregado = valorNominal - Dscto 
-	Escribir "El valor entregado otorgando el monto descontado es: "
-	Escribir trunc(valorEntregado*100)/100
+	valorEntregado = valorNominal
 	Escribir "Quiere ingresar algun gasto o comision? (si/no): "
 	Leer hayGastosOComisiones
+	pago = 0
 	Mientras Mayusculas(hayGastosOComisiones) = "SI" Hacer
 		Escribir "Ingrese el monto del gasto o comision: "
 		Leer pago
-		valorEntregado <- valorEntregado - pago
+		valorEntregado <- valorEntregado + pago
 		Escribir "Quiere ingresar más gastos o comisiones? (si/no)"
 		Leer hayGastosOComisiones
 	Fin Mientras
-	valorEntregado <- valorNeto - sumGastos
 FinFuncion
 
 
@@ -107,9 +105,14 @@ Algoritmo DescuentoComercial
 	Escribir "Ingrese el valor del monto por honorarios:"
 	Leer valorNominal
 	
-	Si (valorNominal >= 1500) Entonces
-		valorNominal <- (92/100)*valorNominal
-	FinSi
+//	Si (valorNominal >= 1500) Entonces
+//		valorNominal <- (92/100)*valorNominal
+//		Escribir "El valor nominal con la retencion del impuesto a la renta es de: "
+//		Escribir valorNominal
+//	FinSi
+
+	
+	
 	
 	Escribir "Se realizará el factoring con tasa nominal o efectiva?"
 	Leer tipoTasa
@@ -128,23 +131,35 @@ Algoritmo DescuentoComercial
 	SiNo
 		d <- CalculoTasaDescontadaConTasaEfectivaAnual(TEAc, periodoEnDias)
 	FinSi
-	
+	Escribir " "
+	Escribir "*****************************************************"
 	Escribir "La tasa de descuento es:"
 	Escribir d "%"
+	Escribir "*****************************************************"
+	Escribir " "
 	
+	Escribir " "
+	Escribir "*****************************************************"
 	valorRecibido <- CalculoDelValorRecibido(valorNominal, d, Dscto , valorNeto) 
-	
-	
 	Escribir "El valor recibido con las comisiones, gastos, seguros aplicados:"
 	Escribir trunc(valorRecibido*100)/100
+	Escribir "*****************************************************"
+	Escribir " "
 	
+	Escribir " "
+	Escribir "*****************************************************"
 	valorEntregado <- CalculoDelValorEntregado(valorNominal, Dscto)
 	Escribir "El valor entregado será de: "
 	Escribir trunc(valorEntregado*100)/100
+	Escribir "*****************************************************"
+	Escribir " "
 	
+	Escribir " "
+	Escribir "*****************************************************"
 	TCEA<-CalculoTasaCosteEfectivaAnual(valorEntregado, valorRecibido, periodoEnDias)
 	Escribir "La tasa de coste efectiva anual es de: "
 	Escribir TCEA "%"
-	
+	Escribir "*****************************************************"
+	Escribir " "
 	
 FinAlgoritmo
