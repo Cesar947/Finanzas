@@ -28,5 +28,5 @@ public class TipoTasa {
     private String description;
 
 	@Column(name="T_Capitalizacion", length = 20, nullable = true)
-    private String capitalizacion;
+    private String tasacapitalizacion;
 }

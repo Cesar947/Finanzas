@@ -31,28 +31,28 @@ public class Factoring {
     private Integer id;
 	
     @Column(name = "P_Desgravamen", length = 7, nullable = false)
-    private Integer P_Desgravamen;
+    private Integer porcentajeDesgravamen;
     
     @Column(name = "M_Portes", length = 7, nullable = false)
-    private Integer M_Portes;
+    private Integer montoPortes;
     
     @Column(name = "M_ITF", length = 7, nullable = false)
-    private Integer M_ITF;
+    private Integer montoITF;
     
     @Column(name = "M_Recibido_Total", length = 7, nullable = false)
-    private BigDecimal M_Recibido_Total;
+    private BigDecimal montoTotalRecibido;
     
     @Column(name = "TCEA_Total", length = 7, nullable = false)
-    private BigDecimal TCEA_Total;
+    private BigDecimal tceaTotal;
     
     @Column(name = "D_Descuento", length = 7, nullable = false)
-    private Date D_Descuento; 
+    private Date fechaDescuento; 
     
     @ManyToOne 
     @JoinColumn(name="id_Tipo_Tasa")
     private TipoTasa tipotasa;
     
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
-    private Date P_Tasa_Factoring; 	
+    private Date porcentajeTasaFactoring; 	
 
 }
