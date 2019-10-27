@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Emisor")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Emisor implements Serializable {
@@ -31,7 +30,7 @@ public class Emisor implements Serializable {
     private int dni;
 	
 	@Column(name="N_Nombres", length = 50, nullable = false)
-	private int nombres;
+	private String nombres;
 	
 	@Column(name="N_Apellidos", length = 50, nullable = false)
 	private int apellidos;
@@ -50,6 +49,79 @@ public class Emisor implements Serializable {
 	
 	@Column(name="T_Contrasena", length = 50, nullable = false)
 	private int contrasena;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public int getDni() {
+		return dni;
+	}
+
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+
+
+	public String getNombres() {
+		return nombres;
+	}
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public int getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(int apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public int getRuc() {
+		return ruc;
+	}
+
+	public void setRuc(int ruc) {
+		this.ruc = ruc;
+	}
+
+	public int getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(int nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+
+	public int getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(int contrasena) {
+		this.contrasena = contrasena;
+	}
 	
 	
 	
