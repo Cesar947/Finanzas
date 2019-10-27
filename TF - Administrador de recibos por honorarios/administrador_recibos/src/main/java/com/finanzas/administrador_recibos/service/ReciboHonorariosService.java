@@ -8,5 +8,6 @@ public interface ReciboHonorariosService {
 	
 	public List<ReciboHonorarios> listar();	
 	
-
+	ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo) throws Exception;
+	
 }
