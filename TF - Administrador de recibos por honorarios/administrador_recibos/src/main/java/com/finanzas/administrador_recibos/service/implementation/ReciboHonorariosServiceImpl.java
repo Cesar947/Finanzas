@@ -28,5 +28,8 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
 		return reciboHonorariosRepository.findAll();
 	}
 	
+	public List<ReciboHonorarios> EncontrarPorNombre(ReciboHonorarios recibo) {
+		return reciboHonorariosRepository.findAllById(recibo);
+	}
 
 }

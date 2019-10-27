@@ -1,0 +1,32 @@
+package com.finanzas.administrador_recibos.service.implementation;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.finanzas.administrador_recibos.dao.TipoTasaRepository;
+import com.finanzas.administrador_recibos.model.TipoTasa;
+import com.finanzas.administrador_recibos.service.TipoTasaService;
+
+public class TipoTasaServiceImpl implements TipoTasaService{
+
+	private TipoTasaRepository tipoTasaRepository;
+	
+    @Autowired
+    public TipoTasaServiceImpl(TipoTasaRepository tipoTasaRepository) {
+        this.tipoTasaRepository = tipoTasaRepository;
+    }
+
+    public TipoTasa registrarTipoTasa(TipoTasa tipotasa) throws Exception{
+
+        return tipoTasaRepository.save(tipotasa);
+    }
+
+	public List<TipoTasa> EncontrarPorNombre(TipoTasa tasa) {
+		return tipoTasaRepository.findById(tasa.id);
+	}
+	
+	
+	
+
+}
