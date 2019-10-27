@@ -19,18 +19,17 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
         this.reciboHonorariosRepository = reciboHonorariosRepository;
     }
 
-    public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo){
+    public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo) throws Exception{
 
         return reciboHonorariosRepository.save(recibo);
     }
 	
-	public List<ReciboHonorarios> listar(){
+	public List<ReciboHonorarios> listar() {
 		return reciboHonorariosRepository.findAll();
 	}
 	
-	public List<ReciboHonorarios> EncontrarPorNombre(ReciboHonorarios recibo) {
-		return reciboHonorariosRepository.findAllById(recibo);
+	public ReciboHonorarios EncontrarPorID(ReciboHonorarios recibo) {
+		return reciboHonorariosRepository.findById(recibo.getId()).get();
 	}
-
 
 }

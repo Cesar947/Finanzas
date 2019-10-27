@@ -22,11 +22,9 @@ public class TipoTasaServiceImpl implements TipoTasaService{
         return tipoTasaRepository.save(tipotasa);
     }
 
-	public List<TipoTasa> EncontrarPorNombre(TipoTasa tasa) {
-		return tipoTasaRepository.findById(tasa.getId());
+	public TipoTasa EncontrarPorID(Integer tasaid) {
+		return tipoTasaRepository.findById(tasaid).get();
 	}
-	
-	
 	
 
 }
