@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Recibo_Honorarios")
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReciboHonorarios implements Serializable{
@@ -56,6 +56,80 @@ public class ReciboHonorarios implements Serializable{
 	
 	@Column(name="T_Tipo_Moneda", length = 8, nullable = false)
     private BigDecimal tipoMoneda;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getFechaEmision() {
+		return fechaEmision;
+	}
+
+	public void setFechaEmision(Date fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public BigDecimal getMontoHonorarios() {
+		return montoHonorarios;
+	}
+
+	public void setMontoHonorarios(BigDecimal montoHonorarios) {
+		this.montoHonorarios = montoHonorarios;
+	}
+
+	public BigDecimal getRetencionIR() {
+		return retencionIR;
+	}
+
+	public void setRetencionIR(BigDecimal retencionIR) {
+		this.retencionIR = retencionIR;
+	}
+
+	public BigDecimal getMontoNeto() {
+		return montoNeto;
+	}
+
+	public void setMontoNeto(BigDecimal montoNeto) {
+		this.montoNeto = montoNeto;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Emisor getEmisor() {
+		return emisor;
+	}
+
+	public void setEmisor(Emisor emisor) {
+		this.emisor = emisor;
+	}
+
+	public BigDecimal getTipoMoneda() {
+		return tipoMoneda;
+	}
+
+	public void setTipoMoneda(BigDecimal tipoMoneda) {
+		this.tipoMoneda = tipoMoneda;
+	}
+	
+	
 	
 	
 	
