@@ -27,10 +27,10 @@ public class Cliente implements Serializable{
     @Column(name = "id_Cliente", length = 11, nullable = false)
     private Integer id;
 	
-	@Column(name="N_RUC", length = 9, nullable = false)
-    private int ruc;
+	@Column(name="N_RUC", length = 11, nullable = false)
+    private String ruc;
 	
 	@Column(name="T_Nombre", length = 50, nullable = false)
-    private int nombre;
+    private String nombre;
 	
 }
