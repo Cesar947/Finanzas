@@ -1,5 +1,6 @@
 package com.finanzas.administrador_recibos.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,11 +18,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Tipo_Tasa")
+@Table(name = "Factoring")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Factoring {
+public class Factoring implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -50,7 +51,7 @@ public class Factoring {
     
     @ManyToOne 
     @JoinColumn(name="id_Tipo_Tasa")
-    private TipoTasa tipotasa;
+    private TipoTasa tipoTasa;
     
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
     private Date porcentajeTasaFactoring; 	

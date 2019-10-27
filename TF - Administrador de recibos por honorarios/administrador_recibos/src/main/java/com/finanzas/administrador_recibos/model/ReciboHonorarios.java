@@ -1,5 +1,6 @@
 package com.finanzas.administrador_recibos.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
 
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReciboHonorarios {
+public class ReciboHonorarios implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

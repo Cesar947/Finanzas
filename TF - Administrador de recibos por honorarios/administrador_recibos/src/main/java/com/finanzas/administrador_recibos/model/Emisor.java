@@ -1,5 +1,7 @@
 package com.finanzas.administrador_recibos.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Emisor {
+public class Emisor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

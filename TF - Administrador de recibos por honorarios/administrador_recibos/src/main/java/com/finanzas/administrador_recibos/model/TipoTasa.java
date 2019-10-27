@@ -1,5 +1,7 @@
 package com.finanzas.administrador_recibos.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoTasa {
+public class TipoTasa implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,8 +28,8 @@ public class TipoTasa {
     private Integer id;
 	
 	@Column(name="T_Descripcion", length = 12, nullable = false)
-    private String description;
+    private String descripcion;
 
 	@Column(name="T_Capitalizacion", length = 20, nullable = true)
-    private String tasacapitalizacion;
+    private String tasaCapitalizacion;
 }
