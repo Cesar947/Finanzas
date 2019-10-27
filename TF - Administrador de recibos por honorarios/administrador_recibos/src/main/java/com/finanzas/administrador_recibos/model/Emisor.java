@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Emisor")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Emisor implements Serializable {
@@ -31,25 +30,25 @@ public class Emisor implements Serializable {
     private int dni;
 	
 	@Column(name="N_Nombres", length = 50, nullable = false)
-	private int nombres;
+	private String nombres;
 	
 	@Column(name="N_Apellidos", length = 50, nullable = false)
-	private int apellidos;
+	private String apellidos;
 	
 	@Column(name="N_RUC", length = 11, nullable = false)
-	private int ruc;
+	private String ruc;
 	
 	@Column(name="N_Direccion", length = 100, nullable = false)
-	private int direccion;
+	private String direccion;
 	
 	@Column(name="N_Telefono", length = 10, nullable = false)
 	private int telefono;
 	
 	@Column(name="T_Nombre_Usuario", length = 50, nullable = false)
-	private int nombre_usuario;
+	private String nombre_usuario;
 	
 	@Column(name="T_Contrasena", length = 50, nullable = false)
-	private int contrasena;
+	private String contrasena;
 	
 	
 	
