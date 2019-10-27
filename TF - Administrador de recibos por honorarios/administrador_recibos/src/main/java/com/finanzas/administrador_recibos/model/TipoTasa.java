@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Tipo_Tasa")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoTasa implements Serializable{
@@ -32,4 +31,30 @@ public class TipoTasa implements Serializable{
 
 	@Column(name="T_Capitalizacion", length = 20, nullable = true)
     private String tasaCapitalizacion;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getTasaCapitalizacion() {
+		return tasaCapitalizacion;
+	}
+
+	public void setTasaCapitalizacion(String tasaCapitalizacion) {
+		this.tasaCapitalizacion = tasaCapitalizacion;
+	}
+	
+	
 }

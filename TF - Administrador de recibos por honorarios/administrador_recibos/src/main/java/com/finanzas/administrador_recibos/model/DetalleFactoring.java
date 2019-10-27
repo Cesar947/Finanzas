@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Detalle_Factoring")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetalleFactoring implements Serializable {
@@ -59,6 +58,86 @@ public class DetalleFactoring implements Serializable {
 
     @Column(name = "N_Periodo_Dias", length = 7, nullable = false)
     private int numeroPeriodoDias;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Factoring getFactoring() {
+		return factoring;
+	}
+
+	public void setFactoring(Factoring factoring) {
+		this.factoring = factoring;
+	}
+
+	public ReciboHonorarios getReciboHonorarios() {
+		return reciboHonorarios;
+	}
+
+	public void setReciboHonorarios(ReciboHonorarios reciboHonorarios) {
+		this.reciboHonorarios = reciboHonorarios;
+	}
+
+	public BigDecimal getTcea() {
+		return tcea;
+	}
+
+	public void setTcea(BigDecimal tcea) {
+		this.tcea = tcea;
+	}
+
+	public BigDecimal getMontoValorRecibido() {
+		return montoValorRecibido;
+	}
+
+	public void setMontoValorRecibido(BigDecimal montoValorRecibido) {
+		this.montoValorRecibido = montoValorRecibido;
+	}
+
+	public BigDecimal getMontoValorEntregado() {
+		return montoValorEntregado;
+	}
+
+	public void setMontoValorEntregado(BigDecimal montoValorEntregado) {
+		this.montoValorEntregado = montoValorEntregado;
+	}
+
+	public BigDecimal getMontoDescontado() {
+		return montoDescontado;
+	}
+
+	public void setMontoDescontado(BigDecimal montoDescontado) {
+		this.montoDescontado = montoDescontado;
+	}
+
+	public BigDecimal getPorcentajeTasaDescontada() {
+		return porcentajeTasaDescontada;
+	}
+
+	public void setPorcentajeTasaDescontada(BigDecimal porcentajeTasaDescontada) {
+		this.porcentajeTasaDescontada = porcentajeTasaDescontada;
+	}
+
+	public int getMontoValorNeto() {
+		return montoValorNeto;
+	}
+
+	public void setMontoValorNeto(int montoValorNeto) {
+		this.montoValorNeto = montoValorNeto;
+	}
+
+	public int getNumeroPeriodoDias() {
+		return numeroPeriodoDias;
+	}
+
+	public void setNumeroPeriodoDias(int numeroPeriodoDias) {
+		this.numeroPeriodoDias = numeroPeriodoDias;
+	}
     
     
 }

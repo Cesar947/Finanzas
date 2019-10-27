@@ -23,7 +23,7 @@ public class TipoTasaServiceImpl implements TipoTasaService{
     }
 
 	public List<TipoTasa> EncontrarPorNombre(TipoTasa tasa) {
-		return tipoTasaRepository.findById(tasa.id);
+		return tipoTasaRepository.findById(tasa.getId());
 	}
 	
 	

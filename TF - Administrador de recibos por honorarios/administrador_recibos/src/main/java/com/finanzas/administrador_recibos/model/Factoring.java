@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Factoring")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Factoring implements Serializable {
@@ -54,6 +53,79 @@ public class Factoring implements Serializable {
     private TipoTasa tipoTasa;
     
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
-    private Date porcentajeTasaFactoring; 	
+    private Date porcentajeTasaFactoring;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getPorcentajeDesgravamen() {
+		return porcentajeDesgravamen;
+	}
+
+	public void setPorcentajeDesgravamen(Integer porcentajeDesgravamen) {
+		this.porcentajeDesgravamen = porcentajeDesgravamen;
+	}
+
+	public Integer getMontoPortes() {
+		return montoPortes;
+	}
+
+	public void setMontoPortes(Integer montoPortes) {
+		this.montoPortes = montoPortes;
+	}
+
+	public Integer getMontoITF() {
+		return montoITF;
+	}
+
+	public void setMontoITF(Integer montoITF) {
+		this.montoITF = montoITF;
+	}
+
+	public BigDecimal getMontoTotalRecibido() {
+		return montoTotalRecibido;
+	}
+
+	public void setMontoTotalRecibido(BigDecimal montoTotalRecibido) {
+		this.montoTotalRecibido = montoTotalRecibido;
+	}
+
+	public BigDecimal getTceaTotal() {
+		return tceaTotal;
+	}
+
+	public void setTceaTotal(BigDecimal tceaTotal) {
+		this.tceaTotal = tceaTotal;
+	}
+
+	public Date getFechaDescuento() {
+		return fechaDescuento;
+	}
+
+	public void setFechaDescuento(Date fechaDescuento) {
+		this.fechaDescuento = fechaDescuento;
+	}
+
+	public TipoTasa getTipoTasa() {
+		return tipoTasa;
+	}
+
+	public void setTipoTasa(TipoTasa tipoTasa) {
+		this.tipoTasa = tipoTasa;
+	}
+
+	public Date getPorcentajeTasaFactoring() {
+		return porcentajeTasaFactoring;
+	}
+
+	public void setPorcentajeTasaFactoring(Date porcentajeTasaFactoring) {
+		this.porcentajeTasaFactoring = porcentajeTasaFactoring;
+	} 	
+
+    
 }

@@ -8,5 +8,5 @@ import com.finanzas.administrador_recibos.model.TipoTasa;
 @Repository
 public interface TipoTasaRepository extends JpaRepository<TipoTasa,Integer> {
 
-
+	
 }
