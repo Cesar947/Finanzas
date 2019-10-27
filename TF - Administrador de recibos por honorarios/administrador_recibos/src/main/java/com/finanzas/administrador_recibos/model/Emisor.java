@@ -121,7 +121,8 @@ public class Emisor implements Serializable {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-	
-	
+
+
+
 	
 }
