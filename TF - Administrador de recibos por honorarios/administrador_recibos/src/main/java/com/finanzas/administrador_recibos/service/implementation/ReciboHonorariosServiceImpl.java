@@ -19,7 +19,9 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
 	
 	public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo) throws Exception{
 	
+		
 		return reciboHonorariosRepository.save(recibo);
 	}
+	
 	
 }
