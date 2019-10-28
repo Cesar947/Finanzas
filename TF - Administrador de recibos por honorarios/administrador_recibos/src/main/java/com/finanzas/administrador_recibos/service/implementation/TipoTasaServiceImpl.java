@@ -1,6 +1,5 @@
 package com.finanzas.administrador_recibos.service.implementation;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
