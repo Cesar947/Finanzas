@@ -17,13 +17,14 @@ public class EmisorServiceImpl implements EmisorService{
 	
 	@Override
 	@Transactional
-	public Integer insert(Emisor emisor) {
+	public Emisor registrarEmisor(Emisor emisor) {
 		// TODO Auto-generated method stub
+		Emisor nuevo = new Emisor();
 		int rpta = emisorRepository.buscarNombreEmisor(emisor.getNombres());
 		if (rpta == 0) {
-			emisorRepository.save(emisor);
+			nuevo = emisorRepository.save(emisor);
 		}
-		return rpta;
+		return nuevo;
 	}
 
 

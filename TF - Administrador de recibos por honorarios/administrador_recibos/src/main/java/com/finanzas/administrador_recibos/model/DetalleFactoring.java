@@ -34,7 +34,7 @@ public class DetalleFactoring implements Serializable {
     private Factoring factoring;
 	
     @ManyToOne 
-    @JoinColumn(name="id_Codigo")
+    @JoinColumn(name="id_recibo")
     private ReciboHonorarios reciboHonorarios;
 
     @Column(name = "TCEA", length = 7, nullable = false)

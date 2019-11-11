@@ -2,11 +2,12 @@ package com.finanzas.administrador_recibos.service.implementation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.finanzas.administrador_recibos.dao.TipoTasaRepository;
 import com.finanzas.administrador_recibos.model.TipoTasa;
 import com.finanzas.administrador_recibos.service.TipoTasaService;
-
+@Service
 public class TipoTasaServiceImpl implements TipoTasaService{
 
 	private TipoTasaRepository tipoTasaRepository;

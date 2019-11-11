@@ -14,12 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Recibo_Honorarios")
-
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReciboHonorarios implements Serializable{
@@ -28,8 +26,8 @@ public class ReciboHonorarios implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Codigo", length = 8, nullable = false)
-    private String id;
+    @Column(name = "id_recibo", length = 4, nullable = false)
+    private Integer id;
 	
 	@Column(name="D_Emision", nullable = false)
     private Date fechaEmision;
@@ -57,11 +55,11 @@ public class ReciboHonorarios implements Serializable{
 	@Column(name="T_Tipo_Moneda", length = 8, nullable = false)
     private BigDecimal tipoMoneda;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

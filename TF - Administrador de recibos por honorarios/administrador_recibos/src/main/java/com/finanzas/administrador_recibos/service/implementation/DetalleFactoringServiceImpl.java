@@ -3,11 +3,13 @@ package com.finanzas.administrador_recibos.service.implementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.finanzas.administrador_recibos.dao.DetalleFactoringRepository;
 import com.finanzas.administrador_recibos.model.DetalleFactoring;
 import com.finanzas.administrador_recibos.service.DetalleFactoringService;
 
+@Service
 public class DetalleFactoringServiceImpl implements DetalleFactoringService{
 	
 

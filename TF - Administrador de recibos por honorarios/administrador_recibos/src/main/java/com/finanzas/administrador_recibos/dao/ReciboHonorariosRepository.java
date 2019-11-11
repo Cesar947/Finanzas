@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 
 @Repository
-public interface ReciboHonorariosRepository extends JpaRepository<ReciboHonorarios, String>  {
+public interface ReciboHonorariosRepository extends JpaRepository<ReciboHonorarios, Integer>  {
 	
 	
 	
