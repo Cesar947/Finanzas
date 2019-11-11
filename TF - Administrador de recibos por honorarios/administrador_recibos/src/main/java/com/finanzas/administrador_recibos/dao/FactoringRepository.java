@@ -7,5 +7,5 @@ import com.finanzas.administrador_recibos.model.Factoring;
 
 @Repository
 public interface FactoringRepository extends JpaRepository<Factoring, Integer>{
-
+ 
 }

@@ -9,4 +9,7 @@ public interface TipoTasaService {
 	TipoTasa registrarTipoTasa(TipoTasa tasa) throws Exception;
 	
 	public TipoTasa EncontrarPorID(Integer tasaid);
+	
+	
+	
 }

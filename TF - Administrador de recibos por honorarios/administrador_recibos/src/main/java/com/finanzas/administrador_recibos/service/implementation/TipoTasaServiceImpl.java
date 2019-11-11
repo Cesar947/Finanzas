@@ -25,5 +25,8 @@ public class TipoTasaServiceImpl implements TipoTasaService{
 	public TipoTasa EncontrarPorID(Integer tasaid) {
 		return tipoTasaRepository.findById(tasaid).get();
 	}
+	
+	
+	
 
 }

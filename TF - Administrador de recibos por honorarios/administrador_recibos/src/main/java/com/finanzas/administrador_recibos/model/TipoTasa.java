@@ -29,7 +29,7 @@ public class TipoTasa implements Serializable{
     private String descripcion;
 
 	@Column(name="T_Capitalizacion", length = 20, nullable = true)
-    private String tasaCapitalizacion;
+    private String capitalizacion;
 
 	public Integer getId() {
 		return id;
@@ -47,12 +47,12 @@ public class TipoTasa implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public String getTasaCapitalizacion() {
-		return tasaCapitalizacion;
+	public String getCapitalizacion() {
+		return capitalizacion;
 	}
 
-	public void setTasaCapitalizacion(String tasaCapitalizacion) {
-		this.tasaCapitalizacion = tasaCapitalizacion;
+	public void setCapitalizacion(String capitalizacion) {
+		this.capitalizacion = capitalizacion;
 	}
 	
 	
