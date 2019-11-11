@@ -1,6 +1,8 @@
 package com.finanzas.administrador_recibos.service.implementation;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,12 @@ public class EmisorServiceImpl implements EmisorService{
 			nuevo = emisorRepository.save(emisor);
 		}
 		return nuevo;
+	}
+	
+	@Override
+	@Transactional
+	public List<Emisor> listarEmisores() throws Exception{
+		return emisorRepository.findAll();
 	}
 
 
