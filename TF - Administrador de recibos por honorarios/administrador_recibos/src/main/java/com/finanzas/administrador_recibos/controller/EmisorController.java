@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finanzas.administrador_recibos.model.Emisor;
@@ -32,5 +33,9 @@ public class EmisorController {
 		return emisorService.listarEmisores();
 	}
 	
-	
+	@RequestMapping(path = "/iniciarsesion", method = RequestMethod.GET)
+	public Integer verificarEmisor(@RequestParam(name = "usuario", required = true) String name, 
+			@RequestParam(name = "contraseña", required = true) String contraseña) {
+		return emisorService.verificarEmisor(name, contraseña);
+	}
 }
