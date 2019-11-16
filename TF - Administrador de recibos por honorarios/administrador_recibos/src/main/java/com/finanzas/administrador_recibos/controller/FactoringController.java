@@ -27,7 +27,9 @@ public class FactoringController {
 	@RequestMapping(path = "/factoring", method = RequestMethod.POST)
 	public Factoring registrarFactoring(@RequestBody Factoring factoring, @RequestBody List<ReciboHonorarios> recibos, @RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
 			@RequestParam(name="capitalizacion", required = false) String capitalizacion) throws Exception {
+
 		return factoringService.registrarFactoring(factoring, tipoTasa, capitalizacion, recibos);
+
 	}
 
 }

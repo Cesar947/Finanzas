@@ -24,12 +24,15 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
         return reciboHonorariosRepository.save(recibo);
     }
 	
-	public List<ReciboHonorarios> listar() {
-		return reciboHonorariosRepository.findAll();
-	}
 	
 	public ReciboHonorarios EncontrarPorID(ReciboHonorarios recibo) {
 		return reciboHonorariosRepository.findById(recibo.getId()).get();
+	}
+
+	@Override
+	public List<ReciboHonorarios> listar(Integer emisorId) {
+		// TODO Auto-generated method stub
+		return reciboHonorariosRepository.findAll();
 	}
 
 }
