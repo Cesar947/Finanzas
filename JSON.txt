@@ -1,0 +1,25 @@
+ {
+        "id": 1,
+        "fechaEmision": "2019-07-19",
+        "fechaVencimiento": "2019-08-24",
+        "montoHonorarios": 145,
+        "retencionIR": 14,
+        "montoNeto": 1455,
+        "cliente": {
+            "id": 1,
+            "ruc": "15874",
+            "nombre": "Umer"
+        },
+        "emisor": {
+            "id": 1,
+            "dni": 73895875,
+            "nombres": "umer",
+            "apellidos": "Avila",
+            "ruc": "14574",
+            "direccion": "umer",
+            "telefono": 5710018,
+            "nombre_usuario": "umer",
+            "contrasena": "umer"
+        },
+        "tipoMoneda": 51
+    }

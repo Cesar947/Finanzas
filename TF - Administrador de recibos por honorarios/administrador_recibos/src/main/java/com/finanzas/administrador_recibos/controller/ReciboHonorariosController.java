@@ -13,6 +13,7 @@ import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 import com.finanzas.administrador_recibos.service.ReciboHonorariosService;
 
 @RestController
+@RequestMapping("/recibosHonorarios")
 public class ReciboHonorariosController  {
 	private ReciboHonorariosService reciboporhonorarioservice;
 	
@@ -21,13 +22,13 @@ public class ReciboHonorariosController  {
 		this.reciboporhonorarioservice = reciboporhonorarioservice;
 	}
 	
-	@RequestMapping(path = "/reciboporhonorarios", method = RequestMethod.POST)
+	@RequestMapping(path = "/registro", method = RequestMethod.POST)
 	public ReciboHonorarios RegistrarReciboPorHonorario(@RequestBody ReciboHonorarios recibohonorario) throws Exception{
 		return reciboporhonorarioservice.registrarReciboPorHonorarios(recibohonorario);
 		
 	}
 	
-	@RequestMapping(path = "/reciboporhonorarios", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<ReciboHonorarios> listar(@RequestParam(value = "emisorId", required  = true) Integer emisorId) {
 		return reciboporhonorarioservice.listar(emisorId);
 	}
