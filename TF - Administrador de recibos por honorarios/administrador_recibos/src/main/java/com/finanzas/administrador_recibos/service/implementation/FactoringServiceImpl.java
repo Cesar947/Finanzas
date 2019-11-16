@@ -57,7 +57,18 @@ public class FactoringServiceImpl implements FactoringService{
 		double d = ((TEP/100)/(1 + TEP/ 100))*100;
 		return BigDecimal.valueOf(d);
     }
+    
+    public BigDecimal HallarValorDescuento(BigDecimal d, BigDecimal valorNominal) {
+    	double pDescuento = d.doubleValue()/100;
+    	double descuento = pDescuento*valorNominal.doubleValue();
+    	return BigDecimal.valueOf(descuento);
+    }
 
+    public BigDecimal HallarValorNeto(BigDecimal descuento, BigDecimal valorNominal) {
+    	BigDecimal valorNeto = valorNominal.subtract(descuento);
+    	return valorNeto;
+    }
+    
 	
 	@Override
 	@Transactional
