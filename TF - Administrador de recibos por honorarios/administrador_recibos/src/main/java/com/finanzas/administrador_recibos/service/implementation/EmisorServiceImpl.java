@@ -35,5 +35,10 @@ public class EmisorServiceImpl implements EmisorService{
 		return emisorRepository.findAll();
 	}
 
+	@Override
+	public Integer verificarEmisor(String name, String contraseña) {
+		return emisorRepository.verificarEmisor(name, contraseña);
+	}
+
 
 }

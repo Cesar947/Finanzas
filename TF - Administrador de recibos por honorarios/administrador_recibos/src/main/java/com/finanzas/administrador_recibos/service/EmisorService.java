@@ -8,4 +8,8 @@ public interface EmisorService {
 	public Emisor registrarEmisor(Emisor emisor);
 	
 	public List<Emisor> listarEmisores() throws Exception;
+	
+	public Integer verificarEmisor(String name, String contrasena);
+	
+	
 }
