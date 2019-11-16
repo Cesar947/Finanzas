@@ -1,4 +1,7 @@
 package com.finanzas.administrador_recibos.service.implementation;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.finanzas.administrador_recibos.dao.FactoringRepository;
 import com.finanzas.administrador_recibos.dao.TipoTasaRepository;
+import com.finanzas.administrador_recibos.model.Capitalizacion;
 import com.finanzas.administrador_recibos.model.DetalleFactoring;
 import com.finanzas.administrador_recibos.model.Factoring;
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 import com.finanzas.administrador_recibos.model.TipoTasa;
 import com.finanzas.administrador_recibos.service.FactoringService;
+
+
+
+
+
+
 
 @Service
 public class FactoringServiceImpl implements FactoringService{
@@ -29,6 +39,26 @@ public class FactoringServiceImpl implements FactoringService{
 	@Autowired
 	private TipoTasaRepository tipoTasaRepository;
 	
+	
+
+    public BigDecimal ConversionTNAaTEA(TipoTasa tipoTasa, Capitalizacion capitalizacion, double valorTasaNominal) {
+	
+	double mN = 360/capitalizacion.getNumDias();
+	double TEAdouble = (Math.pow(1 + valorTasaNominal/mN ,mN) - 1)*100;
+	BigDecimal TEA = BigDecimal.valueOf(TEAdouble);
+	return TEA;
+    }
+    
+    public BigDecimal HallarTasaDescuento(BigDecimal TEA, Date fechaDscto, Date fechaVcto, BigDecimal valorNominal ) {
+    	
+    	
+		int periodoEnDias= (int) ((fechaVcto.getTime()-fechaDscto.getTime())/86400000);
+        double TEP = (Math.pow(1 + TEA.doubleValue(),(periodoEnDias/360)) - 1)*100;
+		double d = ((TEP/100)/(1 + TEP/ 100))*100;
+		return BigDecimal.valueOf(d);
+    }
+
+	
 	@Override
 	@Transactional
 	public Integer insert(Factoring PorcentajeDesgravamen) {
@@ -44,6 +74,9 @@ public class FactoringServiceImpl implements FactoringService{
 	public List<Factoring> listar() {
 		return factoringRepository.findAll();
 	}
+	
+	
+	
 
 	@Override
 	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, List<ReciboHonorarios> recibos) throws Exception {
