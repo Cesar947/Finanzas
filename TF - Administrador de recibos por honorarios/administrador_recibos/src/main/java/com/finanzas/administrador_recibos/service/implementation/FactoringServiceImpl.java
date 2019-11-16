@@ -1,7 +1,6 @@
 package com.finanzas.administrador_recibos.service.implementation;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,6 @@ import com.finanzas.administrador_recibos.model.Factoring;
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 import com.finanzas.administrador_recibos.model.TipoTasa;
 import com.finanzas.administrador_recibos.service.FactoringService;
-
-
-
-
-
 
 
 @Service
@@ -67,6 +61,31 @@ public class FactoringServiceImpl implements FactoringService{
     public BigDecimal HallarValorNeto(BigDecimal descuento, BigDecimal valorNominal) {
     	BigDecimal valorNeto = valorNominal.subtract(descuento);
     	return valorNeto;
+    }
+    
+    
+    public BigDecimal HallaElValorRecibido (BigDecimal descuento, BigDecimal valorNominal, BigDecimal ValorNeto, String tipoMoneda, BigDecimal segDesg, BigDecimal porte, BigDecimal itf)
+    {
+    	double van = ValorNeto.doubleValue();
+    	
+    	
+    	double port = porte.doubleValue();
+    	double it = itf.doubleValue();
+    	double sgDg = (segDesg.doubleValue()/100)*valorNominal.doubleValue();
+    	if (tipoMoneda == "Dólares")
+    	{
+           port = 1.00;
+           it = 5.00;
+    	}
+    	else {
+    		if (tipoMoneda == "Soles")
+    		{
+    			port = 2.50;
+    			it = 5.00;
+    		}
+    	}
+    	double valorReci = van - sgDg - port - it;
+    	return BigDecimal.valueOf(valorReci);
     }
     
 	
