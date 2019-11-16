@@ -1,0 +1,14 @@
+
+Registro de emisor 
+
+{
+
+        "dni": 73928134,
+        "nombres": "César Alejandro",
+        "apellidos": "Pizarro Llanos",
+        "ruc": "12345678911",
+        "direccion": "Av. Siempre viva 42",
+        "telefono": 999888222,
+        "nombreUsuario": "Colectivo UPC S.A.C",
+        "contrasena": "TitoPuente"
+}

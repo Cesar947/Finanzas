@@ -44,7 +44,7 @@ public class Emisor implements Serializable {
 	private int telefono;
 	
 	@Column(name="T_Nombre_Usuario", length = 50, nullable = false)
-	private String nombre_usuario;
+	private String nombreUsuario;
 	
 	@Column(name="T_Contrasena", length = 50, nullable = false)
 	private String contrasena;
@@ -105,12 +105,12 @@ public class Emisor implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public String getContrasena() {

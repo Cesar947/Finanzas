@@ -28,6 +28,8 @@ public class DetalleFactoringController {
 	public DetalleFactoring registrarDetalleFactoring(@RequestBody DetalleFactoring detallefactoring) throws Exception {
 		return detallefactoringService.registrarDetalleFactoring(detallefactoring);
 	}
+
+
 	@RequestMapping(path = "/detallefactoring", method = RequestMethod.GET)
 	public List<DetalleFactoring> listar() {
 		return detallefactoringService.listar();

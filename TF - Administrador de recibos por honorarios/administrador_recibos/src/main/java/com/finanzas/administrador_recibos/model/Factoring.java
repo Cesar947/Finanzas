@@ -41,7 +41,7 @@ public class Factoring implements Serializable {
     @Column(name = "M_Recibido_Total", length = 7, nullable = false)
     private BigDecimal montoTotalRecibido;
     
-    @Column(name = "TCEA_Total", length = 7, nullable = false)
+    @Column(name = "TCEA_Total", length = 7, nullable = true)
     private BigDecimal tceaTotal;
     
     @Column(name = "D_Descuento", length = 7, nullable = false)
@@ -50,6 +50,10 @@ public class Factoring implements Serializable {
     @ManyToOne 
     @JoinColumn(name="id_Tipo_Tasa")
     private TipoTasa tipoTasa;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_Capitalizacion", nullable = true)
+    private Capitalizacion capitalizacion;
     
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
     private Date porcentajeTasaFactoring;
