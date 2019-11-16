@@ -88,6 +88,22 @@ public class FactoringServiceImpl implements FactoringService{
     	return BigDecimal.valueOf(valorReci);
     }
     
+    
+    public BigDecimal HallarElValorEntregado (BigDecimal valorNominal)
+    {
+    	double valorEntregado = valorNominal.doubleValue();
+        
+        return BigDecimal.valueOf(valorEntregado);
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 	
 	@Override
 	@Transactional
