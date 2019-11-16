@@ -51,6 +51,10 @@ public class Factoring implements Serializable {
     @JoinColumn(name="id_Tipo_Tasa")
     private TipoTasa tipoTasa;
     
+    @ManyToOne
+    @JoinColumn(name = "id_Capitalizacion")
+    private Capitalizacion capitalizacion;
+    
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
     private Date porcentajeTasaFactoring;
 

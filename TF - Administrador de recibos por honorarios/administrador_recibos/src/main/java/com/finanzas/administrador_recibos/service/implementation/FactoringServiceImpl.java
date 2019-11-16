@@ -47,10 +47,8 @@ public class FactoringServiceImpl implements FactoringService{
 
 	@Override
 	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion) throws Exception {
-		// TODO Auto-generated method stub
-	    TipoTasa tasa = tipoTasaRepository.encontrarPorDescripcionYCapitalizacion(tipoTasa, capitalizacion);
-	    factoring.setTipoTasa(tasa);
-		return factoringRepository.save(factoring);
+	   //TODO: Implementar el registrar Factoring
+		return new Factoring();
 	}
 
 	@Override

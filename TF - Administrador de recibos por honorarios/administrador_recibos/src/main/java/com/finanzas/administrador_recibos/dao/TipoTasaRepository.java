@@ -9,6 +9,5 @@ import com.finanzas.administrador_recibos.model.TipoTasa;
 @Repository
 public interface TipoTasaRepository extends JpaRepository<TipoTasa,Integer> {
 
-	  @Query("SELECT t FROM TipoTasa t WHERE t.descripcion = ?1 AND t.capitalizacion = ?2")	
-	   public TipoTasa encontrarPorDescripcionYCapitalizacion(String descripcion, String capitalizacion);
+
 }
