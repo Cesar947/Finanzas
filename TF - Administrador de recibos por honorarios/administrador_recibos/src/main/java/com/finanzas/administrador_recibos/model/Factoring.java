@@ -52,7 +52,7 @@ public class Factoring implements Serializable {
     private TipoTasa tipoTasa;
     
     @ManyToOne
-    @JoinColumn(name = "id_Capitalizacion")
+    @JoinColumn(name = "id_Capitalizacion", nullable = true)
     private Capitalizacion capitalizacion;
     
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)

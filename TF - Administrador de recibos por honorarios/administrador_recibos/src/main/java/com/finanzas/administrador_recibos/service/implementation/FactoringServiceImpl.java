@@ -46,7 +46,7 @@ public class FactoringServiceImpl implements FactoringService{
 	}
 
 	@Override
-	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion) throws Exception {
+	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, List<ReciboHonorarios> recibos) throws Exception {
 	   //TODO: Implementar el registrar Factoring
 		return new Factoring();
 	}
