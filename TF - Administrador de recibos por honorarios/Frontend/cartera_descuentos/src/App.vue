@@ -1,144 +1,179 @@
+
+
 <template>
-  <v-app id="inspire">
+  <v-app id="app">
     <v-navigation-drawer
-      v-model="drawer"
+      fixed
+      :clipped="$vuetify.breakpoint.mdAndUp"
       app
-      clipped
+      v-model="drawer"
     >
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>¿Qué es Factoring?</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <template>
+          <v-list-tile :to="{name:'home'}">
+            <v-list-tile-action>
+              <v-icon>home</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title>
+              Inicio
+            </v-list-tile-title>
+          </v-list-tile>
+        </template>
 
-        <v-list-item to="HelloWorld.vue">
-          <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Pasos a Seguir</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <template>
+          <v-list-group>
+            <v-list-tile slot="activator">
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Mantenimiento
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile :to="{ name: 'pacientes'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Pacientes
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+           
 
-        <v-list-item  to="Orden.vue">
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title >Mi Cuenta</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-group>
 
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title >Recibo por Honorarios</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          <v-list-group>
+            <v-list-tile slot="activator">
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Ordenes
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+           
+            <v-list-tile :to="{ name: 'ordenes'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Ordenes
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
 
-        <v-list-item  link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title >Comenzar Simulacion</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-group>
+        </template>
+        
+      <!--  <template>
+         <v-list-group>
+            <v-list-tile :to="{ name: 'pasos'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Pasos a Seguir
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+         </v-list-group>
 
-        <v-list-item  link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title >Preguntas Frecuentes</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-list-group>
+        <v-list-tile :to="{ name: 'misrecibos'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Mis Recibos
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+        </v-list-group>
 
+
+
+         <v-list-group>
+          <v-list-tile :to="{ name: 'simulacion'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Simulacion
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+         </v-list-group>
+
+
+          <v-list-group>
+            <v-list-tile :to="{ name: 'preguntas'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Preguntas frecuentes
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list-group>
+        
+        </template>-->
+       
+        
       </v-list>
     </v-navigation-drawer>
-
-    <v-app-bar
+    <v-toolbar
+      color="blue darken-3"
+      dark
       app
-      clipped-left
+      :clipped-left="$vuetify.breakpoint.mdAndUp"
+      fixed
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Application</v-toolbar-title>
-    </v-app-bar>
-
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <span class="hidden-sm-and-down">Hospital</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+    </v-toolbar>
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="shrink">
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/bXNzZL"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
+      <v-container fluid fill-height>
+        <v-slide-y-transition mode="out-in">
+          <router-view/>
+        </v-slide-y-transition>
       </v-container>
     </v-content>
-
-    <v-footer app>
-      <span>&copy; 2019</span>
+    <v-footer dark height="auto">
+      <v-layout justify-center>
+        <v-flex text-xs-center>
+          <v-card flat tile color="primary" class="white--text">
+            <v-card-text class="white--text pt-0">
+             HAMP &copy;2019
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
     </v-footer>
+
   </v-app>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Orden from './components/Orden.vue';
 
-
- export default {
-   name: 'App',
-
-  components: {
-    HelloWorld, Orden,
-  },
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-    }),
-    created () {
-      this.$vuetify.theme.dark = true
-    },
+export default {
+  name: 'App',
+  data () {
+    return {
+      drawer: true,
+     }
   }
+}
 </script>

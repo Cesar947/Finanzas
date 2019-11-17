@@ -53,7 +53,7 @@ public class ReciboHonorarios implements Serializable{
 	private Emisor emisor;
 	
 	@Column(name="T_Tipo_Moneda", length = 8, nullable = false)
-    private BigDecimal tipoMoneda;
+    private String tipoMoneda;
 
 	public Integer getId() {
 		return id;
@@ -119,11 +119,11 @@ public class ReciboHonorarios implements Serializable{
 		this.emisor = emisor;
 	}
 
-	public BigDecimal getTipoMoneda() {
+	public String getTipoMoneda() {
 		return tipoMoneda;
 	}
 
-	public void setTipoMoneda(BigDecimal tipoMoneda) {
+	public void setTipoMoneda(String tipoMoneda) {
 		this.tipoMoneda = tipoMoneda;
 	}
 	

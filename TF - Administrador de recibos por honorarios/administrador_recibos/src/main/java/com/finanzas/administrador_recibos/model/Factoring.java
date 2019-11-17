@@ -2,7 +2,7 @@ package com.finanzas.administrador_recibos.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,20 +24,24 @@ public class Factoring implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	//SE GENERA
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_Factoring", length = 7, nullable = false)
     private Integer id;
 	
+	//SE INGRESA
     @Column(name = "P_Desgravamen", length = 7, nullable = false)
-    private Integer porcentajeDesgravamen;
+    private BigDecimal porcentajeDesgravamen;
     
+    //DEBEMOS IGUALAR CON IF'S
     @Column(name = "M_Portes", length = 7, nullable = false)
-    private Integer montoPortes;
+    private BigDecimal montoPortes;
     
     @Column(name = "M_ITF", length = 7, nullable = false)
-    private Integer montoITF;
+    private BigDecimal montoITF;
     
+    //SE CALCULA CON FUNCIONES
     @Column(name = "M_Recibido_Total", length = 7, nullable = false)
     private BigDecimal montoTotalRecibido;
     
@@ -47,6 +51,7 @@ public class Factoring implements Serializable {
     @Column(name = "D_Descuento", length = 7, nullable = false)
     private Date fechaDescuento; 
     
+    //SE INGRESA
     @ManyToOne 
     @JoinColumn(name="id_Tipo_Tasa")
     private TipoTasa tipoTasa;
@@ -55,8 +60,9 @@ public class Factoring implements Serializable {
     @JoinColumn(name = "id_Capitalizacion", nullable = true)
     private Capitalizacion capitalizacion;
     
+    //SE INGRESA
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
-    private Date porcentajeTasaFactoring;
+    private BigDecimal porcentajeTasaFactoring;
 
 	public Integer getId() {
 		return id;
@@ -66,28 +72,41 @@ public class Factoring implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getPorcentajeDesgravamen() {
+	public BigDecimal getPorcentajeDesgravamen() {
 		return porcentajeDesgravamen;
 	}
 
-	public void setPorcentajeDesgravamen(Integer porcentajeDesgravamen) {
+	public void setPorcentajeDesgravamen(BigDecimal porcentajeDesgravamen) {
 		this.porcentajeDesgravamen = porcentajeDesgravamen;
 	}
 
-	public Integer getMontoPortes() {
+	
+	public BigDecimal getMontoPortes() {
 		return montoPortes;
 	}
 
-	public void setMontoPortes(Integer montoPortes) {
+	public void setMontoPortes(BigDecimal montoPortes) {
 		this.montoPortes = montoPortes;
 	}
 
-	public Integer getMontoITF() {
+	public BigDecimal getMontoITF() {
 		return montoITF;
 	}
 
-	public void setMontoITF(Integer montoITF) {
+	public void setMontoITF(BigDecimal montoITF) {
 		this.montoITF = montoITF;
+	}
+
+	public Capitalizacion getCapitalizacion() {
+		return capitalizacion;
+	}
+
+	public void setCapitalizacion(Capitalizacion capitalizacion) {
+		this.capitalizacion = capitalizacion;
+	}
+
+	public void setPorcentajeTasaFactoring(BigDecimal porcentajeTasaFactoring) {
+		this.porcentajeTasaFactoring = porcentajeTasaFactoring;
 	}
 
 	public BigDecimal getMontoTotalRecibido() {
@@ -122,13 +141,10 @@ public class Factoring implements Serializable {
 		this.tipoTasa = tipoTasa;
 	}
 
-	public Date getPorcentajeTasaFactoring() {
+	public BigDecimal getPorcentajeTasaFactoring() {
 		return porcentajeTasaFactoring;
 	}
 
-	public void setPorcentajeTasaFactoring(Date porcentajeTasaFactoring) {
-		this.porcentajeTasaFactoring = porcentajeTasaFactoring;
-	} 	
 
     
 }

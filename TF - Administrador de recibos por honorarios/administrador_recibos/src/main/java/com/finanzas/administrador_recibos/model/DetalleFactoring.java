@@ -53,7 +53,7 @@ public class DetalleFactoring implements Serializable {
     private BigDecimal porcentajeTasaDescontada;
 
     @Column(name = "M_Valor_Neto", length = 7, nullable = false)
-    private int montoValorNeto;
+    private BigDecimal montoValorNeto;
 
     @Column(name = "N_Periodo_Dias", length = 7, nullable = false)
     private int numeroPeriodoDias;
@@ -122,11 +122,11 @@ public class DetalleFactoring implements Serializable {
 		this.porcentajeTasaDescontada = porcentajeTasaDescontada;
 	}
 
-	public int getMontoValorNeto() {
+	public BigDecimal getMontoValorNeto() {
 		return montoValorNeto;
 	}
 
-	public void setMontoValorNeto(int montoValorNeto) {
+	public void setMontoValorNeto(BigDecimal montoValorNeto) {
 		this.montoValorNeto = montoValorNeto;
 	}
 
