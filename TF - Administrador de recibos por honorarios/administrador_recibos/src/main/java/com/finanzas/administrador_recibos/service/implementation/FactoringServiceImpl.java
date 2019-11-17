@@ -94,12 +94,30 @@ public class FactoringServiceImpl implements FactoringService{
     	double valorEntregado = valorNominal.doubleValue();
         
         return BigDecimal.valueOf(valorEntregado);
-        
-        
-        
-        
-        
+     
     }
+    
+    public BigDecimal HallarLaTcea (BigDecimal valorRecibido, BigDecimal valorEntregado, Date fchaDsct, Date fechaVcto)
+    {
+		int periodoEnDias= (int) ((fechaVcto.getTime()-fchaDsct.getTime())/86400000);
+		double TCEA = Math.pow((valorEntregado.doubleValue()/valorRecibido.doubleValue()), (360/periodoEnDias))-1;
+    	return BigDecimal.valueOf(TCEA);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
