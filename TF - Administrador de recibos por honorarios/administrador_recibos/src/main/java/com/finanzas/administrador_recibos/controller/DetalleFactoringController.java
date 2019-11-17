@@ -24,7 +24,7 @@ public class DetalleFactoringController {
 
 	}
 
-	@RequestMapping(path = "/detallefactoring/{id}", method = RequestMethod.POST)
+	@RequestMapping(path = "/registro", method = RequestMethod.POST)
 	public DetalleFactoring registrarDetalleFactoring(@RequestBody DetalleFactoring detallefactoring) throws Exception {
 		return detallefactoringService.registrarDetalleFactoring(detallefactoring);
 	}

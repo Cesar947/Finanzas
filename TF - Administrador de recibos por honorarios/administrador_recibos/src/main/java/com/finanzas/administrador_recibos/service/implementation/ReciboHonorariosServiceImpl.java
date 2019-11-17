@@ -25,8 +25,8 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
     }
 	
 	
-	public ReciboHonorarios EncontrarPorID(ReciboHonorarios recibo) {
-		return reciboHonorariosRepository.findById(recibo.getId()).get();
+	public ReciboHonorarios EncontrarPorID(String reciboId) {
+		return reciboHonorariosRepository.findById(reciboId).get();
 	}
 
 	@Override

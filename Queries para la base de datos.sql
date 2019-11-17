@@ -6,22 +6,34 @@ n_dni, t_nombre_usuario, n_nombres, n_ruc, n_telefono)
 VALUES("Pizarro Llanos", "TitoPuente", "Av. Siempre viva 42", 73928134, 
 "Colectivo UPC S.A.C", "César Alejandro", "12345678911", 999888222 );
 
+INSERT INTO cliente (t_nombre, n_ruc)
+VALUES("TODO A UN PRECIO E.I.R.L", "20535858501");
+
 SELECT * FROM Emisor;
+select * from Cliente;
 INSERT INTO tipo_tasa (t_descripcion)
 VALUES ("efectiva");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "anual");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "semestral");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "cuatrimestral");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "trimestral");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "bimestral");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "mensual");
-INSERT INTO tipo_tasa (t_descripcion, t_capitalizacion)
-VALUES ("nominal", "diaria");
-DELETE FROM tipo_tasa WHERE id_tipo_tasa = 2;
-Select * From tipo_tasa;
+INSERT INTO tipo_tasa (t_descripcion)
+VALUES ("nominal");
+
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("anual", 360);
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("semestral", 180);
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("cuatrimestral", 120);
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("trimestral", 90);
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("bimestral", 60);
+INSERT INTO capitalizacion(t_descripcion, n_dias)
+VALUES("mensual", 30);
+SELECT * FROM tipo_tasa;
+SELECT * FROM capitalizacion;
+
+INSERT INTO recibo_honorarios
+values("E001-1", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCION", 0, "soles", "textileria", 1,1);
+
+select * from recibo_honorarios;
+
+

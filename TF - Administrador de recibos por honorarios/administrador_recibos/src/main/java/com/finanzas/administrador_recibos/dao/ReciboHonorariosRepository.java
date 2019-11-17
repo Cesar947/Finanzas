@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 
 @Repository
-public interface ReciboHonorariosRepository extends JpaRepository<ReciboHonorarios, Integer>  {
+public interface ReciboHonorariosRepository extends JpaRepository<ReciboHonorarios, String>  {
 	
 	@Query("select c from ReciboHonorarios c JOIN Emisor d on c.emisor.id = d.id where c.emisor.id = :id ")
 	List<ReciboHonorarios> findRecibo(@Param("id") String id);	

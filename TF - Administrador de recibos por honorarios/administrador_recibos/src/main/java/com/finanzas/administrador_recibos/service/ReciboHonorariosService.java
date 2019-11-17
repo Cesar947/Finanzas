@@ -10,7 +10,7 @@ public interface ReciboHonorariosService {
 	
 	public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo) throws Exception;
 	
-	public ReciboHonorarios EncontrarPorID(ReciboHonorarios reciboHonorarios);
+	public ReciboHonorarios EncontrarPorID(String reciboId);
  
 	
 	

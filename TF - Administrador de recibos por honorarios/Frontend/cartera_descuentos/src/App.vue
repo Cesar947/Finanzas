@@ -1,5 +1,3 @@
-
-
 <template>
   <v-app id="app">
     <v-navigation-drawer
@@ -66,63 +64,6 @@
           </v-list-group>
         </template>
         
-      <!--  <template>
-         <v-list-group>
-            <v-list-tile :to="{ name: 'pasos'}">
-              <v-list-tile-action>
-                <v-icon>table_chart</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Pasos a Seguir
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-         </v-list-group>
-
-        <v-list-group>
-        <v-list-tile :to="{ name: 'misrecibos'}">
-              <v-list-tile-action>
-                <v-icon>table_chart</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Mis Recibos
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-        </v-list-group>
-
-
-
-         <v-list-group>
-          <v-list-tile :to="{ name: 'simulacion'}">
-              <v-list-tile-action>
-                <v-icon>table_chart</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Simulacion
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-         </v-list-group>
-
-
-          <v-list-group>
-            <v-list-tile :to="{ name: 'preguntas'}">
-              <v-list-tile-action>
-                <v-icon>table_chart</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Preguntas frecuentes
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list-group>
-        
-        </template>-->
        
         
       </v-list>

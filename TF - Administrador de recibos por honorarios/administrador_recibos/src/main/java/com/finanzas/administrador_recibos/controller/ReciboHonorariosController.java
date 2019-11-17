@@ -3,6 +3,7 @@ package com.finanzas.administrador_recibos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,12 @@ public class ReciboHonorariosController  {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<ReciboHonorarios> listar(@RequestParam(value = "emisorId", required  = true) Integer emisorId) {
 		return reciboporhonorarioservice.listar(emisorId);
+	}
+	
+	
+	@RequestMapping(path = "/{reciboId}", method = RequestMethod.GET)
+	public ReciboHonorarios listarPorId(@PathVariable String reciboId) {
+		return reciboporhonorarioservice.EncontrarPorID(reciboId);
 	}
 		
 }

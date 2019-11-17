@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.finanzas.administrador_recibos.model.DetalleFactoring;
 import com.finanzas.administrador_recibos.model.Factoring;
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
 import com.finanzas.administrador_recibos.service.FactoringService;
@@ -24,12 +25,14 @@ public class FactoringController {
 
 	}
 
-	@RequestMapping(path = "/factoring", method = RequestMethod.POST)
-	public Factoring registrarFactoring(@RequestBody Factoring factoring, @RequestBody List<ReciboHonorarios> recibos, @RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
-			@RequestParam(name="capitalizacion", required = false) String capitalizacion) throws Exception {
+	@RequestMapping(path = "/factoring", method = RequestMethod.GET)
+	public List<DetalleFactoring> registrarYListarResultadosFactoring(@RequestBody Factoring factoring,
+			@RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
+			@RequestParam(name = "capitalizacion", required = true) String capitalizacion,
+			@RequestParam(name = "pSegDesg", required = true) double pSegDesg, 
+			@RequestBody List<ReciboHonorarios> recibos) throws Exception {
+	    
+		return this.factoringService.registrarYListarResultadosFactoring(factoring, tipoTasa, capitalizacion, pSegDesg, recibos);
 
-		return factoringService.registrarFactoring(factoring, tipoTasa, capitalizacion, recibos);
-
-	}
-
+   }
 }

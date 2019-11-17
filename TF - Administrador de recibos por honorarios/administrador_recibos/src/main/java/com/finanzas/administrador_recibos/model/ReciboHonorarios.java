@@ -25,9 +25,8 @@ public class ReciboHonorarios implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_recibo", length = 4, nullable = false)
-    private Integer id;
+    @Column(name = "id_recibo", length = 8, nullable = false)
+    private String id;
 	
 	@Column(name="D_Emision", nullable = false)
     private Date fechaEmision;
@@ -54,12 +53,18 @@ public class ReciboHonorarios implements Serializable{
 	
 	@Column(name="T_Tipo_Moneda", length = 8, nullable = false)
     private String tipoMoneda;
+	
+	@Column(name="T_Tipo_Servicio", length = 50, nullable = false)
+    private String tipoServicio;
+	
+	@Column(name="T_Observacion", length = 8, nullable = false)
+    private String observacion;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -125,6 +130,22 @@ public class ReciboHonorarios implements Serializable{
 
 	public void setTipoMoneda(String tipoMoneda) {
 		this.tipoMoneda = tipoMoneda;
+	}
+
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 	
 	

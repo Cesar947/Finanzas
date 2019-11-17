@@ -22,10 +22,10 @@ public class Capitalizacion {
     @Column(name = "id_Capitalizacion", length = 2, nullable = false)
     private Integer id;
 	
-	 @Column(name = "T_Descripcion", length = 2, nullable = false)
+	 @Column(name = "T_Descripcion", length = 14, nullable = false)
 	 private String descripcion;
 	 
-	 @Column(name = "N_dias", length = 2, nullable = false)
+	 @Column(name = "N_dias", length = 3, nullable = false)
 	 private int numDias;
 
 	public Integer getId() {
