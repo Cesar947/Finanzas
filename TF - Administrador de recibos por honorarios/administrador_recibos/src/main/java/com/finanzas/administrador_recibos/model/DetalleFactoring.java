@@ -30,8 +30,8 @@ public class DetalleFactoring implements Serializable {
     private Integer id;
 	
     @ManyToOne 
-    @JoinColumn(name="id_Factoring")
-    private Factoring factoring;
+    @JoinColumn(name="id_Resultado_factoring")
+    private ResultadoFactoring resultadoFactoring;
 	
     @ManyToOne 
     @JoinColumn(name="id_recibo")
@@ -66,12 +66,14 @@ public class DetalleFactoring implements Serializable {
 		this.id = id;
 	}
 
-	public Factoring getFactoring() {
-		return factoring;
+	
+
+	public ResultadoFactoring getResultadoFactoring() {
+		return resultadoFactoring;
 	}
 
-	public void setFactoring(Factoring factoring) {
-		this.factoring = factoring;
+	public void setResultadoFactoring(ResultadoFactoring resultadoFactoring) {
+		this.resultadoFactoring = resultadoFactoring;
 	}
 
 	public ReciboHonorarios getReciboHonorarios() {

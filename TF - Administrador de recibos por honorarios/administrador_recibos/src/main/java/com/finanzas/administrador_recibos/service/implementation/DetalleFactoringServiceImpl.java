@@ -14,30 +14,34 @@ public class DetalleFactoringServiceImpl implements DetalleFactoringService{
 	
 
 	@Autowired
-	private DetalleFactoringRepository detallefactoringRepository;
+	private DetalleFactoringRepository detalleFactoringRepository;
 	
 	
 	@Override
 	public List<DetalleFactoring> listar() {
-		return detallefactoringRepository.findAll();
+		return detalleFactoringRepository.findAll();
 	}
 
 	@Override
 	public DetalleFactoring registrarDetalleFactoring(DetalleFactoring detallefactoring) throws Exception {
-		return detallefactoringRepository.save(detallefactoring);
+		return detalleFactoringRepository.save(detallefactoring);
 		
 	}
 
 	@Override
 	public DetalleFactoring EncontrarPorID(DetalleFactoring detallefactoring) {
 		// TODO Auto-generated method stub
-		return detallefactoringRepository.findById(detallefactoring.getId()).get();
+		return detalleFactoringRepository.findById(detallefactoring.getId()).get();
 	}
 
 	@Override
 	public Integer insert(DetalleFactoring detallefactoring) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public List<DetalleFactoring> listarPorFactoring(Integer factoringId){
+		return detalleFactoringRepository.listarPorFactoring(factoringId);
 	}
 }
 

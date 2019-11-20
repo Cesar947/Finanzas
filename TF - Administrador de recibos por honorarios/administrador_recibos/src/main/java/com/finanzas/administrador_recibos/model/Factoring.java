@@ -42,15 +42,7 @@ public class Factoring implements Serializable {
     private BigDecimal montoITF;
     
     //SE CALCULA CON FUNCIONES
-    @Column(name = "M_Recibido_Total", length = 7, nullable = false)
-    private BigDecimal montoTotalRecibido;
-    
-    @Column(name = "TCEA_Total", length = 7, nullable = true)
-    private BigDecimal tceaTotal;
-    
-    @Column(name = "D_Descuento", length = 7, nullable = false)
-    private Date fechaDescuento; 
-    
+   
     //SE INGRESA
     @ManyToOne 
     @JoinColumn(name="id_Tipo_Tasa")
@@ -64,6 +56,15 @@ public class Factoring implements Serializable {
     @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
     private BigDecimal porcentajeTasaFactoring;
 
+    
+	 @Column(name = "D_Descuento", length = 7, nullable = false)
+	 private Date fechaDescuento; 
+	    
+	 
+	 @Column(name="T_Tipo_Moneda",length = 8, nullable = false)
+	 private String tipoMoneda;
+    
+    
 	public Integer getId() {
 		return id;
 	}
@@ -109,30 +110,6 @@ public class Factoring implements Serializable {
 		this.porcentajeTasaFactoring = porcentajeTasaFactoring;
 	}
 
-	public BigDecimal getMontoTotalRecibido() {
-		return montoTotalRecibido;
-	}
-
-	public void setMontoTotalRecibido(BigDecimal montoTotalRecibido) {
-		this.montoTotalRecibido = montoTotalRecibido;
-	}
-
-	public BigDecimal getTceaTotal() {
-		return tceaTotal;
-	}
-
-	public void setTceaTotal(BigDecimal tceaTotal) {
-		this.tceaTotal = tceaTotal;
-	}
-
-	public Date getFechaDescuento() {
-		return fechaDescuento;
-	}
-
-	public void setFechaDescuento(Date fechaDescuento) {
-		this.fechaDescuento = fechaDescuento;
-	}
-
 	public TipoTasa getTipoTasa() {
 		return tipoTasa;
 	}
@@ -145,6 +122,23 @@ public class Factoring implements Serializable {
 		return porcentajeTasaFactoring;
 	}
 
+	public Date getFechaDescuento() {
+		return fechaDescuento;
+	}
+
+	public void setFechaDescuento(Date fechaDescuento) {
+		this.fechaDescuento = fechaDescuento;
+	}
+
+	public String getTipoMoneda() {
+		return tipoMoneda;
+	}
+
+	public void setTipoMoneda(String tipoMoneda) {
+		this.tipoMoneda = tipoMoneda;
+	}
+
+	
 
     
 }

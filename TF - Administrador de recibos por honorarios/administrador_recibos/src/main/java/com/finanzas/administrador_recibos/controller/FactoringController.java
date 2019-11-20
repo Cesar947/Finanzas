@@ -31,7 +31,7 @@ public class FactoringController {
 	}
 	
 
-	@RequestMapping(method = RequestMethod.POST)
+	/*@RequestMapping(method = RequestMethod.POST)
 	public List<DetalleFactoring> registrarYListarResultadosFactoring(@RequestBody Factoring factoring,
 			@RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
 			@RequestParam(name = "capitalizacion", required = false) String capitalizacion,
@@ -40,5 +40,5 @@ public class FactoringController {
 	    
 		return this.factoringService.registrarYListarResultadosFactoring(factoring, tipoTasa, capitalizacion, pSegDesg, recibos);
 
-   }
+   }*/
 }
