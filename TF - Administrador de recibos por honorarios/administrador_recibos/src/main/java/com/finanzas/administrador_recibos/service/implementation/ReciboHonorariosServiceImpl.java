@@ -30,7 +30,7 @@ public class ReciboHonorariosServiceImpl implements ReciboHonorariosService {
 	}
 
 	@Override
-	public List<ReciboHonorarios> listar(Integer emisorId) {
+	public List<ReciboHonorarios> listarTodo() {
 		// TODO Auto-generated method stub
 		return reciboHonorariosRepository.findAll();
 	}

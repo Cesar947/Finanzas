@@ -24,11 +24,17 @@ public class FactoringController {
 		this.factoringService = factoringService;
 
 	}
+	
+	@RequestMapping(path = "/lista", method = RequestMethod.GET)
+	public List<Factoring> listar() {
+		return this.factoringService.listar();
+	}
+	
 
-	@RequestMapping(path = "/factoring", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.POST)
 	public List<DetalleFactoring> registrarYListarResultadosFactoring(@RequestBody Factoring factoring,
 			@RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
-			@RequestParam(name = "capitalizacion", required = true) String capitalizacion,
+			@RequestParam(name = "capitalizacion", required = false) String capitalizacion,
 			@RequestParam(name = "pSegDesg", required = true) double pSegDesg, 
 			@RequestBody List<ReciboHonorarios> recibos) throws Exception {
 	    

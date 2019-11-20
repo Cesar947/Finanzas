@@ -29,11 +29,17 @@ public class ReciboHonorariosController  {
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public List<ReciboHonorarios> listar(@RequestParam(value = "emisorId", required  = true) Integer emisorId) {
-		return reciboporhonorarioservice.listar(emisorId);
+	@RequestMapping(path = "/emisor/{emisorId}",method = RequestMethod.GET)
+	public List<ReciboHonorarios> listar(@PathVariable Integer emisorId) {
+		//return reciboporhonorarioservice.listar(emisorId);
+	    
+		return null;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<ReciboHonorarios> listarTodo(){
+		return reciboporhonorarioservice.listarTodo();
+	}
 	
 	@RequestMapping(path = "/{reciboId}", method = RequestMethod.GET)
 	public ReciboHonorarios listarPorId(@PathVariable String reciboId) {

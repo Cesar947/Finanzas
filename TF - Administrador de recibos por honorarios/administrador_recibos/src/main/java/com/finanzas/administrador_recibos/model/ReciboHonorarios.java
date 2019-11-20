@@ -57,7 +57,7 @@ public class ReciboHonorarios implements Serializable{
 	@Column(name="T_Tipo_Servicio", length = 50, nullable = false)
     private String tipoServicio;
 	
-	@Column(name="T_Observacion", length = 8, nullable = false)
+	@Column(name="T_Observacion", length = 30, nullable = false)
     private String observacion;
 
 	public String getId() {

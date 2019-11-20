@@ -161,7 +161,7 @@ public class FactoringServiceImpl implements FactoringService{
 		 List<DetalleFactoring> listaDetalles = new ArrayList<DetalleFactoring>();
 		 int dol = 0;
 		 int sol = 0;
-		 if(tipoTasa == "efectiva") {
+		 if(tipoTasa == "Efectiva") {
 			 capitalizacion = "";
 		 }
 		 else {
@@ -171,7 +171,7 @@ public class FactoringServiceImpl implements FactoringService{
 	     factoring.setTipoTasa(tipoTasaRepository.obtenerPorDescripcion(tipoTasa));
 	   
 	     for(int i = 0; i < recibos.size(); i++) {
-	    	 if(recibos.get(i).getTipoMoneda() == "dólares") {
+	    	 if(recibos.get(i).getTipoMoneda() == "Dólares") {
 	    		 dol++;
 	    	 }
 	    	 else

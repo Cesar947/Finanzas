@@ -32,7 +32,7 @@ SELECT * FROM tipo_tasa;
 SELECT * FROM capitalizacion;
 
 INSERT INTO recibo_honorarios
-values("E001-1", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCION", 0, "soles", "textileria", 1,1);
+values("E001-1", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCION", 0, "Soles", "Textileria", 1,1);
 
 select * from recibo_honorarios;
 

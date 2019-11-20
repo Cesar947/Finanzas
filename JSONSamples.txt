@@ -12,3 +12,33 @@ Registro de emisor
         "nombreUsuario": "Colectivo UPC S.A.C",
         "contrasena": "TitoPuente"
 }
+
+Recibo
+
+  {
+        "id": "E001-2",
+        "fechaEmision": "2019-11-18",
+        "fechaVencimiento": "2020-01-17",
+        "montoHonorarios": 1200.00,
+        "retencionIR": 0.00,
+        "montoNeto": 1200.00,
+        "cliente": {
+            "id": 1,
+            "ruc": "20535858501",
+            "nombre": "TODO A UN PRECIO E.I.R.L"
+        },
+        "emisor": {
+            "id": 1,
+            "dni": 73928134,
+            "nombres": "César Alejandro",
+            "apellidos": "Pizarro Llanos",
+            "ruc": "12345678911",
+            "direccion": "Av. Siempre viva 42",
+            "telefono": 999888222,
+            "nombreUsuario": "Colectivo UPC S.A.C",
+            "contrasena": "TitoPuente"
+        },
+        "tipoMoneda": "Soles",
+        "tipoServicio": "Textileria",
+        "observacion": "SIN RETENCION"
+    }
