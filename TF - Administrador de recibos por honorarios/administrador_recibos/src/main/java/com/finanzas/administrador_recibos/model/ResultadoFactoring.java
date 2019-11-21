@@ -1,7 +1,6 @@
 package com.finanzas.administrador_recibos.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@Entity(name="resultado_factoring")
+@Entity
+@Table(name="resultado_factoring")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultadoFactoring {

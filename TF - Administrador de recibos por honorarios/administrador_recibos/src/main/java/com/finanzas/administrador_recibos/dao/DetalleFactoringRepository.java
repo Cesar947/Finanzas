@@ -12,9 +12,8 @@ import com.finanzas.administrador_recibos.model.DetalleFactoring;
 @Repository
 public interface DetalleFactoringRepository extends JpaRepository<DetalleFactoring, Integer> {
    
-	@Query("SELECT d FROM DetalleFactoring d JOIN ResultadoFactoring rf ON rf.id = d.resultadoFactoring.id "
-			+ "JOIN Factoring f ON f.id = rf.factoring.id WHERE f.id = :id")
-	List<DetalleFactoring> listarPorFactoring(@Param("id") Integer factoringId);
+	@Query("SELECT d FROM DetalleFactoring d join ResultadoFactoring rf on d.resultadoFactoring.id = rf.id WHERE rf.factoring.id = :factId")
+	public List<DetalleFactoring> listarPorFactoring(@Param("factId") Integer factoringId);
 
 }
 
