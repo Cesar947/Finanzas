@@ -67,18 +67,22 @@ public class FactoringServiceImpl implements FactoringService{
 	
 
 	@Override
-	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, double pSegDesg, String tipoMoneda) throws Exception {
+	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, BigDecimal pSegDesg, String tipoMoneda) throws Exception {
 	    
 	
 		 System.out.println(tipoMoneda);
+		 tipoTasa = tipoTasa.toUpperCase();
+		 
+		 
 	
-		 if(tipoTasa == "Efectiva" || tipoTasa == "efectiva" || capitalizacion == null) {
+		 if(tipoTasa.equals("EFECTIVA") || capitalizacion == null) {
 			 capitalizacion = "";
 		 }
 		 else {
+			 capitalizacion = capitalizacion.toUpperCase();
 			  factoring.setCapitalizacion(capitalizacionRepository.obtenerPorDescripcion(capitalizacion));
 		 }
-		 factoring.setPorcentajeDesgravamen(new BigDecimal(pSegDesg));
+		 factoring.setPorcentajeDesgravamen(pSegDesg);
 	     factoring.setTipoTasa(tipoTasaRepository.obtenerPorDescripcion(tipoTasa));
 	   
 	     if(tipoMoneda.equals("Soles")) {
@@ -96,8 +100,10 @@ public class FactoringServiceImpl implements FactoringService{
 	     }
 	    	 
 	     BigDecimal TEA = new BigDecimal(0.00);
+	     
 	     if(!(capitalizacion == "")) {
 	    	 TEA = ConversionTNAaTEA(factoring.getCapitalizacion(), factoring.getPorcentajeTasaFactoring());
+	    	 factoring.setPorcentajeTasaFactoring(TEA);
 	     }
 	   
 	     

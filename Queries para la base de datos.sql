@@ -30,41 +30,41 @@ VALUES("TODO A UN PRECIO E.I.R.L", "20535858501");
 SELECT * FROM Emisor;
 select * from Cliente;
 INSERT INTO tipo_tasa (t_descripcion)
-VALUES ("efectiva");
+VALUES ("EFECTIVA");
 INSERT INTO tipo_tasa (t_descripcion)
-VALUES ("nominal");
+VALUES ("NOMINAL");
 SELECT * FROM tipo_tasa;
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("anual", 360);
+VALUES("ANUAL", 360);
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("semestral", 180);
+VALUES("SEMESTRAL", 180);
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("cuatrimestral", 120);
+VALUES("CUATRIMESTRAL", 120);
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("trimestral", 90);
+VALUES("TRIMESTRAL", 90);
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("bimestral", 60);
+VALUES("BIMESTRAL", 60);
 INSERT INTO capitalizacion(t_descripcion, n_dias)
-VALUES("mensual", 30);
+VALUES("MENSUAL", 30);
 SELECT * FROM tipo_tasa;
 SELECT * FROM capitalizacion;
 
 
 INSERT INTO recibo_honorarios
-values("E001-1", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCION", 0, "Soles", "Reparación de autos", 1,1);
+values("E001-1", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCIÓN", 0, "Soles", "Reparación de autos", 1,1);
 
 INSERT INTO recibo_honorarios
-values("E001-2", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCION", 0, "Soles", "Reparación de autos", 2,1);
+values("E001-2", "2019-11-17", "2019-12-17", 1000, 1000, "SIN RETENCIÓN", 0, "Soles", "Reparación de autos", 2,1);
 
 /**/
 /*
 LOS DE ANIBAL
 */
 INSERT INTO recibo_honorarios
-values("E001-3", "2019-11-20", "2020-01-18", 2000, 2000, "SIN RETENCION", 0, "Soles", "Venta de carburador", 3, 1);
+values("E001-3", "2019-11-20", "2020-01-18", 2000, 2000, "SIN RETENCIÓN", 0, "Soles", "Venta de carburador", 3, 1);
 /*
 INSERT INTO recibo_honorarios
-values("E001-4", "2019-11-14", "2019-12-14", 3000, 3000, "SIN RETENCION", 0, "Soles", "Ayudando a la administración de bienes en la empresa", 1,1);
+values("E001-4", "2019-11-14", "2019-12-14", 3000, 3000, "SIN RETENCIÓN", 0, "Soles", "Ayudando a la administración de bienes en la empresa", 1,1);
 */
 /**/
 
@@ -80,3 +80,5 @@ INSERT INTO Factoring (d_descuento,m_itf ,m_portes , p_desgravamen, p_tasa_facto
 values("2019-11-18", 5.00 ,2.50, 0.09, 15.00, "Soles", null , 1) ;
 
 DELETE FROM Factoring WHERE id_factoring > 1;
+
+SELECT * FROM Detalle_Factoring;

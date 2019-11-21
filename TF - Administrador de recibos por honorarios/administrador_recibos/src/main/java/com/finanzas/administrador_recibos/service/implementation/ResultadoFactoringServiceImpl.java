@@ -77,7 +77,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     {
 		
 		double TCEA = Math.pow((valorEntregado.doubleValue()/valorRecibido.doubleValue()), (360/periodoEnDias))-1;
-    	return BigDecimal.valueOf(TCEA);
+    	return BigDecimal.valueOf(TCEA*100);
     }
     
     public BigDecimal HallarTCEATotalDeCartera(List<DetalleFactoring> detalles, BigDecimal valorRecibidoTotal) {
@@ -89,8 +89,8 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     	double a = 0;
     	double b = 0.8;
     	double val;
-    	double c;
-    	double denom;
+    	double c = 0;
+    	double denom = 0;
     	double tirP = 0;
     	double tirA = 0;
     	for(int i = 0; i < 1000; i++) {
@@ -111,7 +111,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		if(Math.abs(val - I) < 0.001){
     			tirP = c;
     			tirA = tirP*360/F;
-    			TCEA = new BigDecimal(Math.pow(1 + tirA*(F/360), 360/F) - 1);
+    			TCEA = new BigDecimal((Math.pow(1 + tirA*(F/360), 360/F) - 1)*100);
     			i = 1000;
     		}
     		
@@ -141,7 +141,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     BigDecimal dscto;
 	     BigDecimal valorNeto;
 	     BigDecimal valorRecibido;
-	     BigDecimal valorRecibidoTotal = new BigDecimal(0.00);
+	     double valorRecibidoTotal = 0.00;
 	     int periodoEnDias;
 	     BigDecimal TEA = factoring.getPorcentajeTasaFactoring();
 	     BigDecimal pSegDesg = factoring.getPorcentajeDesgravamen();
@@ -169,7 +169,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	    	 valorRecibido = HallaElValorRecibido (dscto, valorNominal, valorNeto, pSegDesg, factoring.getMontoPortes(), factoring.getMontoITF());
 	    	 nuevoDetalle.setMontoValorRecibido(valorRecibido); 
 	    	 
-	    	 valorRecibidoTotal.add(nuevoDetalle.getMontoValorRecibido());
+	    	 valorRecibidoTotal += nuevoDetalle.getMontoValorRecibido().doubleValue();
 	    
 	    	 nuevoDetalle.setMontoValorEntregado(valorNominal);
 	    	  
@@ -180,20 +180,18 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	    	 nuevoDetalle = null;
 	    	 
 	     }
+	     BigDecimal vt = new BigDecimal(valorRecibidoTotal);
 	     
-	     rf.setMontoTotalRecibido(valorRecibidoTotal);
+	     rf.setMontoTotalRecibido(vt);
 	     
-	     BigDecimal tceaTotal = HallarTCEATotalDeCartera(listaDetalles, valorRecibidoTotal);
+	     BigDecimal tceaTotal = HallarTCEATotalDeCartera(listaDetalles, rf.getMontoTotalRecibido());
 	     rf.setTceaTotal(tceaTotal);
 	     
 	     
 	     
-	     for(int i = 0; i < listaDetalles.size(); i++) {
-	    	 if(!(listaDetalles == null)) {
+	     for(int i = 0; i < recibos.size(); i++) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);
-	    	 detalleFactoringRepository.save(listaDetalles.get(i));
-		     } else 
-				break;
+	    	 //detalleFactoringRepository.save(listaDetalles.get(i));
 	     }
 	     
 	     
@@ -210,7 +208,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     	
         ResultadoModelo res = new ResultadoModelo();
         
-        List<DetalleFactoring> detalles = detFactRepo.listarPorFactoring(factId);
+        List<DetalleFactoring> detalles = detalleFactoringRepository.listarPorFactoring(factId);
         ResultadoFactoring resultado = resFactRepo.listarPorFactoring(factId);
         res.setDetalles(detalles);
         res.setResultado(resultado);

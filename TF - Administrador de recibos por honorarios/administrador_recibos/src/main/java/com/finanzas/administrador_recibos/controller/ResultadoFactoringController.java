@@ -3,10 +3,10 @@ package com.finanzas.administrador_recibos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finanzas.administrador_recibos.model.ReciboHonorarios;
@@ -31,9 +31,9 @@ public class ResultadoFactoringController {
 		return resultadoFactoringService.mostrarCalculos(factId);
 	}
 	
-	@RequestMapping(path = "/Calculando", method = RequestMethod.POST)
+	@RequestMapping(path = "/Calculando/{factId}", method = RequestMethod.POST)
 	public ResultadoFactoring calcularFactoring(@RequestBody List<ReciboHonorarios> recibos,
-			@RequestParam(name = "factId", required = true) Integer factId) {
+			@PathVariable Integer factId) {
 		return resultadoFactoringService.CalcularResultado(recibos, factId);
 	}
 	
