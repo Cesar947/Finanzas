@@ -25,7 +25,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	
 	private FactoringRepository factRepo;
 	
-	private DetalleFactoringRepository detFactRepo;
+	private DetalleFactoringRepository detalleFactoringRepository;
 	
 	@Autowired
 	ResultadoFactoringServiceImpl(ResultadoFactoringRepository resFactRepo, FactoringRepository factRepo){
@@ -98,7 +98,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		c = (a + b)/2;
     		for(int j = 0; j < detalles.size(); j++) {
     			denom = Math.pow((1 + c),detalles.get(j).getNumeroPeriodoDias());
-    			val += detalles.get(i).getMontoValorEntregado().doubleValue()/denom;
+    			val += detalles.get(j).getMontoValorEntregado().doubleValue()/denom;
     		}
     		
     		if(val < I) {
@@ -132,7 +132,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     	 
     	 rf.setFactoring(factoring);
     	 
-    	 DetalleFactoring nuevoDetalle = new DetalleFactoring();
+    	 
 		 List<DetalleFactoring> listaDetalles = new ArrayList<DetalleFactoring>();
     	
 	     Date fechaDscto = factoring.getFechaDescuento();
@@ -148,6 +148,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     
 	     
 	     for(int i = 0; i < recibos.size(); i++) {
+	    	 DetalleFactoring nuevoDetalle = new DetalleFactoring();
 	    	 fechaVcto = recibos.get(i).getFechaVencimiento();
 	    	 nuevoDetalle.setReciboHonorarios(recibos.get(i));
 	    	 periodoEnDias = restaDeFechas(fechaDscto, fechaVcto);
@@ -186,10 +187,16 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     rf.setTceaTotal(tceaTotal);
 	     
 	     
+	     
 	     for(int i = 0; i < listaDetalles.size(); i++) {
+	    	 if(!(listaDetalles == null)) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);
-	    	 detFactRepo.save(listaDetalles.get(i));
+	    	 detalleFactoringRepository.save(listaDetalles.get(i));
+		     } else 
+				break;
 	     }
+	     
+	     
 	     
 	    return resFactRepo.save(rf);
 	     

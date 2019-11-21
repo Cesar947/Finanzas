@@ -45,7 +45,7 @@ public class Factoring implements Serializable {
    
     //SE INGRESA
     @ManyToOne 
-    @JoinColumn(name="id_Tipo_Tasa")
+    @JoinColumn(name="id_Tipo_Tasa", nullable = false)
     private TipoTasa tipoTasa;
     
     @ManyToOne

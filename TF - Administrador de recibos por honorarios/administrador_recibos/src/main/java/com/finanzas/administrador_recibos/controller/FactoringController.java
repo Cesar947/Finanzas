@@ -30,15 +30,15 @@ public class FactoringController {
 		return this.factoringService.listar();
 	}
 	
-
-	/*@RequestMapping(method = RequestMethod.POST)
-	public List<DetalleFactoring> registrarYListarResultadosFactoring(@RequestBody Factoring factoring,
+	@RequestMapping(path = "/registro", method = RequestMethod.POST)
+	public Factoring registrarFactoring(@RequestBody Factoring factoring,
 			@RequestParam(name = "tipoTasa", required = true) String tipoTasa, 
-			@RequestParam(name = "capitalizacion", required = false) String capitalizacion,
+			@RequestParam(name = "capitalizacion", required = false) String capitalizacion, 
 			@RequestParam(name = "pSegDesg", required = true) double pSegDesg, 
-			@RequestBody List<ReciboHonorarios> recibos) throws Exception {
-	    
-		return this.factoringService.registrarYListarResultadosFactoring(factoring, tipoTasa, capitalizacion, pSegDesg, recibos);
+			@RequestParam(name = "tipoMoneda", required = true) String tipoMoneda) throws Exception{
+		
+		return this.factoringService.registrarFactoring(factoring, tipoTasa, capitalizacion, pSegDesg, tipoMoneda);
+	}
 
-   }*/
+
 }

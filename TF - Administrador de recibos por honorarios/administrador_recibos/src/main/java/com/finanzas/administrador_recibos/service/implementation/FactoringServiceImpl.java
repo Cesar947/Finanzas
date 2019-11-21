@@ -70,9 +70,9 @@ public class FactoringServiceImpl implements FactoringService{
 	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, double pSegDesg, String tipoMoneda) throws Exception {
 	    
 	
-		 int dol = 0;
-		 int sol = 0;
-		 if(tipoTasa == "Efectiva") {
+		 System.out.println(tipoMoneda);
+	
+		 if(tipoTasa == "Efectiva" || tipoTasa == "efectiva" || capitalizacion == null) {
 			 capitalizacion = "";
 		 }
 		 else {
@@ -81,15 +81,18 @@ public class FactoringServiceImpl implements FactoringService{
 		 factoring.setPorcentajeDesgravamen(new BigDecimal(pSegDesg));
 	     factoring.setTipoTasa(tipoTasaRepository.obtenerPorDescripcion(tipoTasa));
 	   
-	     if(tipoMoneda == "Soles") {
+	     if(tipoMoneda.equals("Soles")) {
 	    	 factoring.setTipoMoneda("Soles");
 	    	 factoring.setMontoPortes(new BigDecimal(2.50));
-	    	 factoring.setMontoPortes(new BigDecimal(5.00));
+	    	 factoring.setMontoITF(new BigDecimal(5.00));
 	     }
-	     else {
+	     else if(tipoMoneda.equals("Dólares")){
 	    	 factoring.setTipoMoneda("Dólares");
 	    	 factoring.setMontoPortes(new BigDecimal(1.00));
-	    	 factoring.setMontoPortes(new BigDecimal(1.50));
+	    	 factoring.setMontoITF(new BigDecimal(1.50));
+	     }
+	     else {
+	    	 return new Factoring();
 	     }
 	    	 
 	     BigDecimal TEA = new BigDecimal(0.00);

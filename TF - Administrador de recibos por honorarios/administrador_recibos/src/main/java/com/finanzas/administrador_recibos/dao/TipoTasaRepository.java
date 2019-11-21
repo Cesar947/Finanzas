@@ -10,6 +10,6 @@ import com.finanzas.administrador_recibos.model.TipoTasa;
 @Repository
 public interface TipoTasaRepository extends JpaRepository<TipoTasa,Integer> {
 
-@Query("SELECT t FROM TipoTasa t where t.descripcion =: descripcion")
+@Query("SELECT t FROM TipoTasa t where t.descripcion = :descripcion")
 TipoTasa obtenerPorDescripcion(@Param("descripcion") String descripcion) throws Exception;
 }
