@@ -191,7 +191,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     
 	     for(int i = 0; i < recibos.size(); i++) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);
-	    	 //detalleFactoringRepository.save(listaDetalles.get(i));
+	    	 detalleFactoringRepository.save(listaDetalles.get(i));
 	     }
 	     
 	     
