@@ -222,7 +222,7 @@ export default {
       porcentajeTasaFactoring: "",
       fechaDescuento: "",
 
-
+     recibo: "",
 
       monedas: [
         "Soles", "Dólares"
@@ -346,6 +346,7 @@ export default {
             cliente: me.cliente,
           })
           .then(function(response) {
+            me.recibo = response.data
             me.close();
             me.listar();
             me.limpiar();

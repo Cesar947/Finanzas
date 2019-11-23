@@ -125,13 +125,13 @@
               
          
            <td>{{ props.item.reciboHonorarios.id }}</td>
-          <td>{{props.item.reciboHonorarios.montoNeto}}</td>
+          <td>{{parseFloat(Math.round(props.item.reciboHonorarios.montoNeto * 100) / 100).toFixed(2)}}</td>
           <td>{{props.item.numeroPeriodoDias}}</td>
           <td>{{ props.item.porcentajeTasaDescontada }}</td>
-          <td>{{ props.item.montoDescontado}}</td>
-          <td>{{ props.item.montoValorNeto }}</td>
-          <td>{{ props.item.montoValorRecibido }}</td>
-           <td>{{ props.item.montoValorEntregado }}</td>
+          <td>{{ parseFloat(Math.round(props.item.montoDescontado* 100) / 100).toFixed(2)}}</td>
+          <td>{{parseFloat(Math.round(props.item.montoValorNeto* 100) / 100).toFixed(2)  }}</td>
+          <td>{{ parseFloat(Math.round(props.item.montoValorRecibido * 100) / 100).toFixed(2)}}</td>
+           <td>{{ parseFloat(Math.round(props.item.montoValorEntregado* 100) / 100).toFixed(2) }}</td>
             <td>{{ props.item.tcea }}</td>
 
         
@@ -212,11 +212,11 @@ export default {
     listar() {
       let me = this;
       axios
-        .get("/detallefactoring?factId=" + factId)
+        .get("/detallefactoring?factId=" + 1)
         .then(function(response) {
           //
           me.detalles = response.data;
-         
+          
 
         })
         .then(function(response){
