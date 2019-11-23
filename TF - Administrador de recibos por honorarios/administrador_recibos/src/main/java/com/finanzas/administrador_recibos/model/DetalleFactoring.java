@@ -1,7 +1,7 @@
 package com.finanzas.administrador_recibos.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,23 +37,23 @@ public class DetalleFactoring implements Serializable {
     @JoinColumn(name="id_recibo")
     private ReciboHonorarios reciboHonorarios;
 
-    @Column(name = "TCEA", length = 7, nullable = false)
-    private BigDecimal tcea; 
+    @Column(name = "TCEA",  nullable = false)
+    private double tcea; 
     
     @Column(name = "M_Valor_Recibido", length = 7, nullable = false)
-    private BigDecimal montoValorRecibido; 
+    private double montoValorRecibido; 
 
     @Column(name = "M_Valor_Entregado", length = 7, nullable = false)
-    private BigDecimal montoValorEntregado;
+    private double montoValorEntregado;
 
     @Column(name = "M_Descontado", length = 7, nullable = false)
-    private BigDecimal montoDescontado;
+    private double montoDescontado;
 
-    @Column(name = "P_Tasa_Descontada", length = 7, nullable = false)
-    private BigDecimal porcentajeTasaDescontada;
+    @Column(name = "P_Tasa_Descontada",  nullable = false)
+    private double porcentajeTasaDescontada;
 
     @Column(name = "M_Valor_Neto", length = 7, nullable = false)
-    private BigDecimal montoValorNeto;
+    private double montoValorNeto;
 
     @Column(name = "N_Periodo_Dias", length = 7, nullable = false)
     private int numeroPeriodoDias;
@@ -84,51 +84,51 @@ public class DetalleFactoring implements Serializable {
 		this.reciboHonorarios = reciboHonorarios;
 	}
 
-	public BigDecimal getTcea() {
+	public double getTcea() {
 		return tcea;
 	}
 
-	public void setTcea(BigDecimal tcea) {
+	public void setTcea(double tcea) {
 		this.tcea = tcea;
 	}
 
-	public BigDecimal getMontoValorRecibido() {
+	public double getMontoValorRecibido() {
 		return montoValorRecibido;
 	}
 
-	public void setMontoValorRecibido(BigDecimal montoValorRecibido) {
+	public void setMontoValorRecibido(double montoValorRecibido) {
 		this.montoValorRecibido = montoValorRecibido;
 	}
 
-	public BigDecimal getMontoValorEntregado() {
+	public double getMontoValorEntregado() {
 		return montoValorEntregado;
 	}
 
-	public void setMontoValorEntregado(BigDecimal montoValorEntregado) {
+	public void setMontoValorEntregado(double montoValorEntregado) {
 		this.montoValorEntregado = montoValorEntregado;
 	}
 
-	public BigDecimal getMontoDescontado() {
+	public double getMontoDescontado() {
 		return montoDescontado;
 	}
 
-	public void setMontoDescontado(BigDecimal montoDescontado) {
+	public void setMontoDescontado(double montoDescontado) {
 		this.montoDescontado = montoDescontado;
 	}
 
-	public BigDecimal getPorcentajeTasaDescontada() {
+	public double getPorcentajeTasaDescontada() {
 		return porcentajeTasaDescontada;
 	}
 
-	public void setPorcentajeTasaDescontada(BigDecimal porcentajeTasaDescontada) {
+	public void setPorcentajeTasaDescontada(double porcentajeTasaDescontada) {
 		this.porcentajeTasaDescontada = porcentajeTasaDescontada;
 	}
 
-	public BigDecimal getMontoValorNeto() {
+	public double getMontoValorNeto() {
 		return montoValorNeto;
 	}
 
-	public void setMontoValorNeto(BigDecimal montoValorNeto) {
+	public void setMontoValorNeto(double montoValorNeto) {
 		this.montoValorNeto = montoValorNeto;
 	}
 

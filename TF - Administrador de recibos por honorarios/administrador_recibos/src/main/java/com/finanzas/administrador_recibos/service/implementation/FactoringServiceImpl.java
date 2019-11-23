@@ -36,11 +36,11 @@ public class FactoringServiceImpl implements FactoringService{
 	@Autowired
 	private DetalleFactoringRepository detalleRepository;
 
-    public BigDecimal ConversionTNAaTEA(Capitalizacion capitalizacion, BigDecimal valorTasaNominal) {
+    public double ConversionTNAaTEA(Capitalizacion capitalizacion, double valorTasaNominal) {
 	
 	double mN = 360/capitalizacion.getNumDias();
-	double TEAdouble = (Math.pow(1 + valorTasaNominal.doubleValue()/mN ,mN) - 1)*100;
-	BigDecimal TEA = BigDecimal.valueOf(TEAdouble);
+	double TEA = (Math.pow(1 + valorTasaNominal/mN ,mN) - 1)*100;
+	
 	return TEA;
     }
     
@@ -67,7 +67,7 @@ public class FactoringServiceImpl implements FactoringService{
 	
 
 	@Override
-	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, BigDecimal pSegDesg, String tipoMoneda) throws Exception {
+	public Factoring registrarFactoring(Factoring factoring, String tipoTasa, String capitalizacion, double pSegDesg, String tipoMoneda) throws Exception {
 	    
 	
 		 System.out.println(tipoMoneda);
@@ -87,19 +87,19 @@ public class FactoringServiceImpl implements FactoringService{
 	   
 	     if(tipoMoneda.equals("Soles")) {
 	    	 factoring.setTipoMoneda("Soles");
-	    	 factoring.setMontoPortes(new BigDecimal(2.50));
-	    	 factoring.setMontoITF(new BigDecimal(5.00));
+	    	 factoring.setMontoPortes(2.50);
+	    	 factoring.setMontoITF(5.00);
 	     }
 	     else if(tipoMoneda.equals("Dólares")){
 	    	 factoring.setTipoMoneda("Dólares");
-	    	 factoring.setMontoPortes(new BigDecimal(1.00));
-	    	 factoring.setMontoITF(new BigDecimal(1.50));
+	    	 factoring.setMontoPortes(1.00);
+	    	 factoring.setMontoITF(1.50);
 	     }
 	     else {
 	    	 return new Factoring();
 	     }
 	    	 
-	     BigDecimal TEA = new BigDecimal(0.00);
+	     double TEA = 0.00;
 	     
 	     if(!(capitalizacion == "")) {
 	    	 TEA = ConversionTNAaTEA(factoring.getCapitalizacion(), factoring.getPorcentajeTasaFactoring());
@@ -112,9 +112,9 @@ public class FactoringServiceImpl implements FactoringService{
 	}
 
 	@Override
-	public Factoring EncontrarPorID(Factoring factoring) {
+	public Factoring EncontrarPorID(Integer id) {
 		// TODO Auto-generated method stub
-		return factoringRepository.findById(factoring.getId()).get();
+		return factoringRepository.findById(id).get();
 	}
 
 

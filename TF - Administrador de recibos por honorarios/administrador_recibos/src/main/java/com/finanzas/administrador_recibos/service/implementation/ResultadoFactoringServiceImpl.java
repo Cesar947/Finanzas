@@ -1,7 +1,7 @@
 package com.finanzas.administrador_recibos.service.implementation;
 
-import java.math.BigDecimal;
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,64 +28,68 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	private DetalleFactoringRepository detalleFactoringRepository;
 	
 	@Autowired
-	ResultadoFactoringServiceImpl(ResultadoFactoringRepository resFactRepo, FactoringRepository factRepo){
+	ResultadoFactoringServiceImpl(ResultadoFactoringRepository resFactRepo, FactoringRepository factRepo, DetalleFactoringRepository detalleFactoringRepository){
 		this.resFactRepo = resFactRepo;
 		this.factRepo = factRepo;
+	    this.detalleFactoringRepository = detalleFactoringRepository;
 	}
 
 	
 	public int restaDeFechas(Date a, Date b) {
-    	int resultado = (int) (b.getTime() - a.getTime())/86400000;
-    	return resultado;
+    	long res1 =  b.getTime();
+    	long res2 =  a.getTime();
+		long resultado = (res1 - res2);
+    	
+    	return (int) resultado;
     }
     
-    public BigDecimal HallarTasaDescuento(BigDecimal TEA, int periodoEnDias, BigDecimal valorNominal ) {
+    public double HallarTasaDescuento(double TEA, int periodoEnDias, double valorNominal ) {
     	
     	
 	
-        double TEP = (Math.pow(1 + TEA.doubleValue(),(periodoEnDias/360)) - 1)*100;
+        double TEP = (Math.pow(1 + TEA,(periodoEnDias/360)) - 1)*100;
 		double d = ((TEP/100)/(1 + TEP/ 100))*100;
-		return BigDecimal.valueOf(d);
+		return d;
     }
     
-    public BigDecimal HallarValorDescuento(BigDecimal d, BigDecimal valorNominal) {
-    	double pDescuento = d.doubleValue()/100;
-    	double descuento = pDescuento*valorNominal.doubleValue();
-    	return BigDecimal.valueOf(descuento);
+    public double HallarValorDescuento(double d, double valorNominal) {
+    	double pDescuento = d/100;
+    	double descuento = pDescuento*valorNominal;
+    	return descuento;
     }
 
-    public BigDecimal HallarValorNeto(BigDecimal descuento, BigDecimal valorNominal) {
-    	BigDecimal valorNeto = valorNominal.subtract(descuento);
+    public double HallarValorNeto(double descuento, double valorNominal) {
+    	double valorNeto = valorNominal - descuento;
     	return valorNeto;
     }
     
     
-    public BigDecimal HallaElValorRecibido (BigDecimal descuento, BigDecimal valorNominal, BigDecimal ValorNeto, BigDecimal pSegDesg, BigDecimal porte, BigDecimal itf)
+    public double HallaElValorRecibido (double descuento, double valorNominal, double ValorNeto, double pSegDesg, double porte, double itf)
     {
-    	double van = ValorNeto.doubleValue();
+    	double van = ValorNeto;
     	
     	
-    	double port = porte.doubleValue();
-    	double it = itf.doubleValue();
-    	double sgDg = (pSegDesg.doubleValue()/100)*valorNominal.doubleValue();
+    	double port = porte;
+    	double it = itf;
+    	double sgDg = (pSegDesg/100)*valorNominal;
     	double valorReci = van - sgDg - port - it;
-    	return BigDecimal.valueOf(valorReci);
+    	return valorReci;
     }
     
     
-    public BigDecimal HallarLaTcea (BigDecimal valorRecibido, BigDecimal valorEntregado,int periodoEnDias)
+    public double HallarLaTcea(double valorRecibido, double valorEntregado,int periodoEnDias)
     {
 		
-		double TCEA = Math.pow((valorEntregado.doubleValue()/valorRecibido.doubleValue()), (360/periodoEnDias))-1;
-    	return BigDecimal.valueOf(TCEA*100);
+		double TCEA = Math.pow((valorEntregado/valorRecibido), (360/periodoEnDias))-1;
+    	return TCEA*100;
     }
     
-    public BigDecimal HallarTCEATotalDeCartera(List<DetalleFactoring> detalles, BigDecimal valorRecibidoTotal) {
+    public double HallarTCEATotalDeCartera(List<DetalleFactoring> detalles, double valorRecibidoTotal) {
     
     	
-    	BigDecimal TCEA = new BigDecimal(0.0);
+    	double TCEA = 0.00;
     	int F = 1;
-    	double I  = valorRecibidoTotal.doubleValue();
+    	double I  = valorRecibidoTotal;
     	double a = 0;
     	double b = 0.8;
     	double val;
@@ -98,7 +102,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		c = (a + b)/2;
     		for(int j = 0; j < detalles.size(); j++) {
     			denom = Math.pow((1 + c),detalles.get(j).getNumeroPeriodoDias());
-    			val += detalles.get(j).getMontoValorEntregado().doubleValue()/denom;
+    			val += detalles.get(j).getMontoValorEntregado()/denom;
     		}
     		
     		if(val < I) {
@@ -111,8 +115,9 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		if(Math.abs(val - I) < 0.001){
     			tirP = c;
     			tirA = tirP*360/F;
-    			TCEA = new BigDecimal((Math.pow(1 + tirA*(F/360), 360/F) - 1)*100);
+    			TCEA = (Math.pow(1 + tirA*(F/360), 360/F) - 1)*100;
     			i = 1000;
+    			return TCEA;
     		}
     		
     	}
@@ -133,18 +138,18 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     	 rf.setFactoring(factoring);
     	 
     	 
-		 List<DetalleFactoring> listaDetalles = new ArrayList<DetalleFactoring>();
+		 List<DetalleFactoring> listaDetalles = null;
     	
 	     Date fechaDscto = factoring.getFechaDescuento();
 	     Date fechaVcto;
-	     BigDecimal pDscto;
-	     BigDecimal dscto;
-	     BigDecimal valorNeto;
-	     BigDecimal valorRecibido;
+	     double pDscto = 0.00;
+	     double dscto = 0.00;
+	     double valorNeto = 0.00;
+	     double valorRecibido = 0.00;
 	     double valorRecibidoTotal = 0.00;
 	     int periodoEnDias;
-	     BigDecimal TEA = factoring.getPorcentajeTasaFactoring();
-	     BigDecimal pSegDesg = factoring.getPorcentajeDesgravamen();
+	     double TEA = factoring.getPorcentajeTasaFactoring();
+	     double pSegDesg = factoring.getPorcentajeDesgravamen();
 	     
 	     
 	     for(int i = 0; i < recibos.size(); i++) {
@@ -153,7 +158,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	    	 nuevoDetalle.setReciboHonorarios(recibos.get(i));
 	    	 periodoEnDias = restaDeFechas(fechaDscto, fechaVcto);
 	    	 nuevoDetalle.setNumeroPeriodoDias(periodoEnDias);
-	    	 BigDecimal valorNominal = recibos.get(i).getMontoNeto();
+	    	 double valorNominal = recibos.get(i).getMontoNeto();
 	    	
 	    	 
 	    	
@@ -169,7 +174,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	    	 valorRecibido = HallaElValorRecibido (dscto, valorNominal, valorNeto, pSegDesg, factoring.getMontoPortes(), factoring.getMontoITF());
 	    	 nuevoDetalle.setMontoValorRecibido(valorRecibido); 
 	    	 
-	    	 valorRecibidoTotal += nuevoDetalle.getMontoValorRecibido().doubleValue();
+	    	 valorRecibidoTotal += nuevoDetalle.getMontoValorRecibido();
 	    
 	    	 nuevoDetalle.setMontoValorEntregado(valorNominal);
 	    	  
@@ -180,11 +185,11 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	    	 nuevoDetalle = null;
 	    	 
 	     }
-	     BigDecimal vt = new BigDecimal(valorRecibidoTotal);
+	     double vt = valorRecibidoTotal;
 	     
 	     rf.setMontoTotalRecibido(vt);
 	     
-	     BigDecimal tceaTotal = HallarTCEATotalDeCartera(listaDetalles, rf.getMontoTotalRecibido());
+	     double tceaTotal = HallarTCEATotalDeCartera(listaDetalles, rf.getMontoTotalRecibido());
 	     rf.setTceaTotal(tceaTotal);
 	     
 	     

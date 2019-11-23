@@ -25,7 +25,7 @@ public class ReciboHonorariosController  {
 	
 	@RequestMapping(path = "/registro/{emisorId}/{clienteId}", method = RequestMethod.POST)
 	public ReciboHonorarios RegistrarReciboPorHonorario(@RequestBody ReciboHonorarios recibohonorario,
-			@PathVariable Integer emisorId) throws Exception{
+			@PathVariable Integer emisorId, @PathVariable Integer clienteId) throws Exception{
 		return reciboporhonorarioservice.registrarReciboPorHonorarios(recibohonorario, emisorId, clienteId);
 
 	}

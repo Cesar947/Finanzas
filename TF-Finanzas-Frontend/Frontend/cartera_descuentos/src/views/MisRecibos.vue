@@ -5,14 +5,7 @@
         <v-toolbar-title>Recibos</v-toolbar-title>
         
         <v-spacer></v-spacer>
-        <v-text-field
-          class="text-xs-center"
-          v-model="search"
-          append-icon="search"
-          label="Búsqueda"
-          single-line
-          hide-details
-        ></v-text-field>
+       
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
           <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
@@ -64,7 +57,7 @@
           </v-card>
         </v-dialog>
         
-        <v-dialog>
+        <v-dialog v-model="dialogD" max-width="500px">
           <v-btn slot="activator" color="info" dark class="mb-2">Ingresar condiciones</v-btn>
            <v-card>
             <v-card-title>
@@ -74,34 +67,61 @@
               <v-container grid-list-md>
                 <v-layout wrap>
                   <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="codigo" label="Código"></v-text-field>
+                    <v-text-field v-model="tipoTasa" label="Tipo de tasa"></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="capitalizacion" label="Capitalizacón"></v-text-field>
+                  </v-flex>
+                   <v-flex xs12 sm12 md12>
+                    <v-text-field v-model="porcentajeTasaFactoring" label="Valor de la tasa"></v-text-field>
                   </v-flex>
                   <v-flex xs6 >
                     <v-select v-model="tipoMoneda" :items="monedas" label="Tipo de moneda">
                     </v-select>
                  </v-flex>
-                  <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="montoTotal" label="Monto total"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="retencionIr" label="Retención (IR)"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="montoNeto" label="Monto Neto"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="tipoServicio" label="Tipo de servicio"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="observacion" label="Observación"></v-text-field>
-                  </v-flex>
-                    <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="fechaEmision" label="Fecha de emisión"></v-text-field>
-                  </v-flex>
-                    <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="fechaVencimiento" label="Fecha de vencimiento"></v-text-field>
-                  </v-flex>
-                
+                   <v-menu
+        ref="startMenu"
+        v-model="startMenu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        :return-value.sync="fechaDescuento"
+        transition="scale-transition"
+        min-width="290px"
+        offset-y
+        full-width
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="fechaDescuento"
+            label="Fecha de descuento"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="fechaDescuento"
+          no-title
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="startMenu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.startMenu.save(fechaDescuento)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+              
                 </v-layout>
               </v-container>
             </v-card-text>
@@ -117,14 +137,14 @@
         </v-dialog>
 
       </v-toolbar>
-      <v-data-table :headers="headers" :items="recibos" :search="search" class="elevation-1">
+      <v-data-table :headers="headers" :items="recibos"  class="elevation-1">
         <template slot="items" slot-scope="props">
           <td class="justify-center layout px-0">
             <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
           </td>
               
           <td style=".ckbox">
-             <v-checkbox v-model="seleccionado" > </v-checkbox>
+             <v-checkbox v-model="seleccionado" :single-select="singleSelect" class="justify-center layout px-0"> </v-checkbox>
           </td>
           <td>{{ props.item.id }}</td>
           <td>{{props.item.emisor.nombres + props.item.emisor.apellidos}}</td>
@@ -133,11 +153,11 @@
           <td>{{ props.item.montoHonorarios}}</td>
           <td>{{ props.item.retencionIR }}</td>
           <td>{{ props.item.montoNeto }}</td>
-           <td>{{ props.item.tipoServicio }}</td>
-            <td>{{ props.item.observacion }}</td>
+           
             <td>{{ props.item.fechaEmision }}</td>
             <td>{{ props.item.fechaVencimiento}}</td>
-
+             <td>{{ props.item.tipoServicio }}</td>
+            <td>{{ props.item.observacion }}</td>  
         
          
         </template>
@@ -159,12 +179,15 @@ import axios from "axios";
 import recibos from "./../assets/recibos.css";
 
 export default {
-  
+
   data() {
     return {
     
       recibos: [],
       dialog: false,
+      dialogD: false,
+      startMenu: false,
+      singleSelect: true,
       headers: [
         { text: "Campos", value: "campos", sortable: false },
         {text: "Selección", value: "seleccion",sortable: false},
@@ -175,16 +198,15 @@ export default {
         { text: "Monto Total", value: "montoTota" },
         { text: "Retención (IR)", value: "retencionIr" },
         { text: "Monto Neto", value: "montoNeto" },
-        { text: "Tipo de servicio", value: "montoNeto" },
-        { text: "Observación", value: "montoNeto" },
         { text: "Fecha de emisión", value: "montoNeto" },
-        { text: "Fecha de vencimiento", value: "montoNeto" }
-      
+        { text: "Fecha de vencimiento", value: "montoNeto" },
+        { text: "Tipo de servicio", value: "montoNeto" },
+        { text: "Observación", value: "montoNeto" }
       ],
       search: "",
       editedIndex: -1,
       editarEdicion: -1,
-      //Model
+      //Model Recibo
       codigo: "",
       tipoMoneda: "",
       montoTotal: "",
@@ -196,8 +218,13 @@ export default {
       fechaVencimiento: "",
       emisor: "",
       cliente: "",
-      //Factoring
 
+      //Model Factoring
+      tipoTasa: "",
+      capitalizacion: "",
+      tipoMoneda: "",
+      porcentajeTasaFactoring: "",
+      fechaDescuento: "",
 
 
 
@@ -217,11 +244,11 @@ export default {
     }
   },
 
-  watch: {
+  /*watch: {
     dialog(val) {
       val || this.close();
     }
-  },
+  },*/
 
   created() {
     this.listar();
@@ -249,13 +276,17 @@ export default {
 
     
     editItem(item) {
-      this.id = item.id;
-      this.nombres = item.nombres;
-      this.apellidos = item.apellidos;
-      this.dni = item.dni;
-      this.direccion = item.direccion;
-      this.telefono = item.telefono;
-
+      this.codigo = "",
+      this.tipoMoneda = "",
+      this.montoTotal = "",
+      this.retencionIr = "",
+      this.montoNeto = "",
+      this.tipoServicio = "",
+      this.observacion = "",
+      this.fechaEmision = "",
+      this.fechaVencimiento = "",
+      this.emisor = "",
+      this.cliente = ""
       this.editedIndex = 1;
       this.dialog = true;
     },
@@ -264,6 +295,7 @@ export default {
 
     close() {
       this.dialog = false;
+      this.dialogD = false;
     },
     limpiar() {
             this.codigo = "",
@@ -283,7 +315,7 @@ export default {
         //Código para editar
 
         let me = this;
-        axios 
+      /*  axios 
           .put("api/paciente", {
             id: me.id,
             nombres: me.nombres,
@@ -300,9 +332,9 @@ export default {
           .catch(function(error) {
             console.log(error);
           });
-      } else {
+      } else {*/
         //Código para guardar
-        let me = this;
+       // let me = this;
         axios
           .post("recibosHonorarios/registro", {
             codigo: me.codigo,

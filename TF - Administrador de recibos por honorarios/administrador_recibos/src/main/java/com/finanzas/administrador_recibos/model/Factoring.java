@@ -1,8 +1,8 @@
 package com.finanzas.administrador_recibos.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -32,14 +36,14 @@ public class Factoring implements Serializable {
 	
 	//SE INGRESA
     @Column(name = "P_Desgravamen", length = 7, nullable = false)
-    private BigDecimal porcentajeDesgravamen;
+    private double porcentajeDesgravamen;
     
     //DEBEMOS IGUALAR CON IF'S
     @Column(name = "M_Portes", length = 7, nullable = false)
-    private BigDecimal montoPortes;
+    private double montoPortes;
     
     @Column(name = "M_ITF", length = 7, nullable = false)
-    private BigDecimal montoITF;
+    private double montoITF;
     
     //SE CALCULA CON FUNCIONES
    
@@ -53,11 +57,13 @@ public class Factoring implements Serializable {
     private Capitalizacion capitalizacion;
     
     //SE INGRESA
-    @Column(name = "P_Tasa_Factoring", length = 7, nullable = false)
-    private BigDecimal porcentajeTasaFactoring;
+    @Column(name = "P_Tasa_Factoring", nullable = false)
+    private double porcentajeTasaFactoring;
 
     
-	 @Column(name = "D_Descuento", length = 7, nullable = false)
+	 @Column(name = "D_Descuento", length = 40, nullable = false)
+	 @DateTimeFormat(pattern = "yyyy-MM-dd")
+	 @Temporal(TemporalType.TIMESTAMP)
 	 private Date fechaDescuento; 
 	    
 	 
@@ -73,28 +79,28 @@ public class Factoring implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getPorcentajeDesgravamen() {
+	public double getPorcentajeDesgravamen() {
 		return porcentajeDesgravamen;
 	}
 
-	public void setPorcentajeDesgravamen(BigDecimal porcentajeDesgravamen) {
+	public void setPorcentajeDesgravamen(double porcentajeDesgravamen) {
 		this.porcentajeDesgravamen = porcentajeDesgravamen;
 	}
 
 	
-	public BigDecimal getMontoPortes() {
+	public double getMontoPortes() {
 		return montoPortes;
 	}
 
-	public void setMontoPortes(BigDecimal montoPortes) {
+	public void setMontoPortes(double montoPortes) {
 		this.montoPortes = montoPortes;
 	}
 
-	public BigDecimal getMontoITF() {
+	public double getMontoITF() {
 		return montoITF;
 	}
 
-	public void setMontoITF(BigDecimal montoITF) {
+	public void setMontoITF(double montoITF) {
 		this.montoITF = montoITF;
 	}
 
@@ -106,7 +112,7 @@ public class Factoring implements Serializable {
 		this.capitalizacion = capitalizacion;
 	}
 
-	public void setPorcentajeTasaFactoring(BigDecimal porcentajeTasaFactoring) {
+	public void setPorcentajeTasaFactoring(double porcentajeTasaFactoring) {
 		this.porcentajeTasaFactoring = porcentajeTasaFactoring;
 	}
 
@@ -118,9 +124,11 @@ public class Factoring implements Serializable {
 		this.tipoTasa = tipoTasa;
 	}
 
-	public BigDecimal getPorcentajeTasaFactoring() {
+	public double getPorcentajeTasaFactoring() {
 		return porcentajeTasaFactoring;
 	}
+
+
 
 	public Date getFechaDescuento() {
 		return fechaDescuento;

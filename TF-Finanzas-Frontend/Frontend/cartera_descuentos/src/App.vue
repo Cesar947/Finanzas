@@ -69,7 +69,7 @@
             </v-list-tile>
 
 
-             <v-list-tile :to="{ name: 'ordenes'}">
+             <v-list-tile :to="{ name: 'simulacion'}">
               <v-list-tile-action>
                 <v-icon>table_chart</v-icon>
               </v-list-tile-action>

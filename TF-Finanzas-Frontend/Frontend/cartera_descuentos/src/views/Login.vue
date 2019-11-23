@@ -41,6 +41,10 @@
                        <v-flex xs12 sm12 md12>
                             <v-text-field v-model="contrasena" label="Contraseña"></v-text-field>
                        </v-flex>
+                       <v-spacer></v-spacer>
+                       <v-flex>
+                           <v-btn to="/recibos/" color="primary" dark class="mb-2" @click.native="iniciarSesion">Iniciar Sesión</v-btn>
+                       </v-flex>
                      </v-layout>
                  </v-container>
               </v-card-text>
@@ -63,8 +67,10 @@
                        <v-flex xs12 sm12 md12>
                             <v-text-field v-model="contrasena" label="Contraseña"></v-text-field>
                        </v-flex>
+                        <v-spacer></v-spacer>
                        <v-flex>
-                         <router-link v-bind:to="'recibos/' + emisorId">Iniciar sesión</router-link>
+                        
+                        <v-btn  color="primary" dark class="mb-2" @click.native="iniciarSesion">Iniciar Sesión</v-btn>
                        </v-flex>
                      </v-layout>
                  </v-container>

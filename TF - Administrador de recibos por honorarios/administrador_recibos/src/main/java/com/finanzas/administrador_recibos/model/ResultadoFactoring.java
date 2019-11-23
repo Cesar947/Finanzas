@@ -1,6 +1,6 @@
 package com.finanzas.administrador_recibos.model;
 
-import java.math.BigDecimal;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,10 +29,10 @@ public class ResultadoFactoring {
     private Integer id;
 	
 	 @Column(name = "M_Recibido_Total", length = 7, nullable = false)
-	    private BigDecimal montoTotalRecibido;
+	    private double montoTotalRecibido;
 	    
-	 @Column(name = "TCEA_Total", length = 7, nullable = true)
-	 private BigDecimal tceaTotal;
+	 @Column(name = "TCEA_Total",  nullable = true)
+	 private double tceaTotal;
 	   
 	 @OneToOne
 	 @JoinColumn(name="id_Factoring")
@@ -54,19 +54,19 @@ public class ResultadoFactoring {
 		this.id = id;
 	}
 
-	public BigDecimal getMontoTotalRecibido() {
+	public double getMontoTotalRecibido() {
 		return montoTotalRecibido;
 	}
 
-	public void setMontoTotalRecibido(BigDecimal montoTotalRecibido) {
+	public void setMontoTotalRecibido(double montoTotalRecibido) {
 		this.montoTotalRecibido = montoTotalRecibido;
 	}
 
-	public BigDecimal getTceaTotal() {
+	public double getTceaTotal() {
 		return tceaTotal;
 	}
 
-	public void setTceaTotal(BigDecimal tceaTotal) {
+	public void setTceaTotal(double tceaTotal) {
 		this.tceaTotal = tceaTotal;
 	}
 	

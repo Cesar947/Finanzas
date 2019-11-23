@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Paciente from './components/Paciente.vue'
 //import Orden from './components/Orden.vue'
 //import RegistroEmisor from './components/RegistroEmisor.vue'
+import Simulacion from './views/Simulacion.vue'
 import Login from './views/Login.vue'
 import MisRecibos from './views/MisRecibos.vue'
 Vue.use(Router)
@@ -31,6 +32,12 @@ export default new Router({
       path: '/recibos/:emisorId',
       name: 'recibos',
       component: MisRecibos
+    },
+    {
+      path: '/simulación',
+      name: 'simulacion',
+      component: Simulacion
     }
+
   ]
 })

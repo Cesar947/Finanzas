@@ -74,11 +74,12 @@ SELECT d.id_detalle FROM detalle_factoring d JOIN resultado_factoring rf
 ON d.id_resultado_factoring = rf.id_resultado_factoring JOIN Factoring f
  ON f.id_factoring = rf.id_factoring WHERE f.id_factoring = 1;
 
-SELECT * FROM Factoring;
+
 
 INSERT INTO Factoring (d_descuento,m_itf ,m_portes , p_desgravamen, p_tasa_factoring,t_tipo_moneda, id_capitalizacion, id_tipo_tasa)
 values("2019-11-18", 5.00 ,2.50, 0.09, 15.00, "Soles", null , 1) ;
-
-DELETE FROM Factoring WHERE id_factoring > 1;
+INSERT INTO Factoring (d_descuento,m_itf ,m_portes , p_desgravamen, p_tasa_factoring,t_tipo_moneda, id_capitalizacion, id_tipo_tasa)
+values("2019-11-18", 5.00 ,2.50, 0.09, 20.00, "Soles", null , 1) ;
+SELECT * FROM Factoring;
 
 SELECT * FROM Detalle_Factoring;
