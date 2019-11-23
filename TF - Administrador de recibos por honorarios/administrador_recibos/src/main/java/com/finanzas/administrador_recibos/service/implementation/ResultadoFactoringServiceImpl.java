@@ -36,18 +36,20 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 
 	
 	public int restaDeFechas(Date a, Date b) {
-    	long res1 =  b.getTime();
-    	long res2 =  a.getTime();
-		long resultado = (res1 - res2);
-    	
+	    long res1 = b.getTime();
+	    long res2 = a.getTime();
+    	long resultado =  (res1 - res2)/86400000;
     	return (int) resultado;
     }
     
     public double HallarTasaDescuento(double TEA, int periodoEnDias, double valorNominal ) {
     	
-    	
+    	double res1 = 1 + TEA/100;
+    	double res2 = (double)(periodoEnDias);
+    	double resP = res2/ (double) 360;
 	
-        double TEP = (Math.pow(1 + TEA,(periodoEnDias/360)) - 1)*100;
+        double TEP = (Math.pow(res1,resP));
+        TEP = (TEP - 1)*100;
 		double d = ((TEP/100)/(1 + TEP/ 100))*100;
 		return d;
     }
@@ -101,7 +103,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		val = 0;
     		c = (a + b)/2;
     		for(int j = 0; j < detalles.size(); j++) {
-    			denom = Math.pow((1 + c),detalles.get(j).getNumeroPeriodoDias());
+    			denom = Math.pow((1 + c), (double) detalles.get(j).getNumeroPeriodoDias());
     			val += detalles.get(j).getMontoValorEntregado()/denom;
     		}
     		
@@ -114,8 +116,8 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     		
     		if(Math.abs(val - I) < 0.001){
     			tirP = c;
-    			tirA = tirP*360/F;
-    			TCEA = (Math.pow(1 + tirA*(F/360), 360/F) - 1)*100;
+    			tirA = tirP*(double)360/F;
+    			TCEA = (Math.pow(1 + tirA*(F/(double)360), (double)360/F) - 1)*100;
     			i = 1000;
     			return TCEA;
     		}
@@ -138,7 +140,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
     	 rf.setFactoring(factoring);
     	 
     	 
-		 List<DetalleFactoring> listaDetalles = null;
+		 List<DetalleFactoring> listaDetalles = new ArrayList<DetalleFactoring>();
     	
 	     Date fechaDscto = factoring.getFechaDescuento();
 	     Date fechaVcto;
@@ -194,9 +196,9 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     
 	     
 	     
-	     for(int i = 0; i < recibos.size(); i++) {
+	     for(int i = 0; i < 1; i++) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);
-	    	 detalleFactoringRepository.save(listaDetalles.get(i));
+	    	 detalleFactoringRepository.save(listaDetalles.get(0));
 	     }
 	     
 	     
