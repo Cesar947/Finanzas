@@ -194,7 +194,7 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     double tceaTotal = HallarTCEATotalDeCartera(listaDetalles, rf.getMontoTotalRecibido());
 	     rf.setTceaTotal(tceaTotal);
 	     
-	     
+	     DetalleFactoring x = listaDetalles.get(0);
 	     
 	     for(int i = 0; i < 1; i++) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);

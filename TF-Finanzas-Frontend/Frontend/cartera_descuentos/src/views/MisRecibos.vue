@@ -166,11 +166,7 @@
         </template>
       </v-data-table>
     </v-flex>
-    <v-flex>
-        
-        <Simulacion/>
-
-    </v-flex>
+   
   </v-layout>
 </template>
 
