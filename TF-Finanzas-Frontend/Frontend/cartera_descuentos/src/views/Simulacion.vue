@@ -2,9 +2,9 @@
     <layout align-start>
        <v-data-table :items="detalles" class="elevation-1">
         <template slot="items" slot-scope="props">
-          <td class="justify-center layout px-0">
+          <!--<td class="justify-center layout px-0">
             <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
-          </td>
+          </td>-->
               
           <td style=".ckbox">
              <v-checkbox v-model="seleccionado" > </v-checkbox>

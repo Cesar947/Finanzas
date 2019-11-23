@@ -63,6 +63,9 @@
                        <v-flex xs12 sm12 md12>
                             <v-text-field v-model="contrasena" label="Contraseña"></v-text-field>
                        </v-flex>
+                       <v-flex>
+                         <router-link v-bind:to="'recibos/' + emisorId">Iniciar sesión</router-link>
+                       </v-flex>
                      </v-layout>
                  </v-container>
               </v-card-text>
@@ -86,9 +89,32 @@ data(){
    dni: "",
    nRuc:"",
    userName:"",
-   contrasena:""
+   contrasena:"",
+   emisorId: ""
   }
+ 
+},
 
+iniciarSesionPorRuc(){
+  let me = this;
+
+  axios.post("emisor/iniciarRUC", {
+      nRuc: me.nRuc,
+      userName: me.userName,
+      contrasena: me.contrasena
+  }).then(function(response){
+      me.emisorId = response
+  })
+},
+iniciarSesionPorDNI(){
+  let me = this;
+  axios.post("emisor/iniciarDNI", {
+    dni: me.dni,
+    userName: me.userName,
+    contrasena: me.contrasena
+  }).then(function(response){
+    me.emisorId = response
+  })
 }
     
 

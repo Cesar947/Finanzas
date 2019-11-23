@@ -146,15 +146,23 @@
         </template>
       </v-data-table>
     </v-flex>
+    <v-flex>
+        
+        <Simulacion/>
+
+    </v-flex>
   </v-layout>
 </template>
 
 <script>
 import axios from "axios";
 import recibos from "./../assets/recibos.css";
+
 export default {
+  
   data() {
     return {
+    
       recibos: [],
       dialog: false,
       headers: [
@@ -186,7 +194,8 @@ export default {
       observacion: "",
       fechaEmision: "",
       fechaVencimiento: "",
-      
+      emisor: "",
+      cliente: "",
       //Factoring
 
 
@@ -257,12 +266,17 @@ export default {
       this.dialog = false;
     },
     limpiar() {
-      this.id = "";
-      this.nombres = "";
-      this.apellidos = "";
-      this.dni = "";
-      this.direccion = "";
-      this.telefono = "";
+            this.codigo = "",
+            this.tipoMoneda = "",
+            this.montoTotal = "",
+            this.retencionIr = "",
+            this.montoNeto = "",
+            this.tipoServicio = "",
+            this.observacion = "",
+            this.fechaEmision = "",
+            this.fechaVencimiento = "",
+            this.emisor = "",
+            this.cliente = ""
     },
     guardar() {
       if (this.editedIndex > -1) {
@@ -290,12 +304,18 @@ export default {
         //Código para guardar
         let me = this;
         axios
-          .post("api/paciente", {
-            nombres: me.nombres,
-            apellidos: me.apellidos,
-            dni: me.dni,
-            direccion: me.direccion,
-            telefono: me.telefono
+          .post("recibosHonorarios/registro", {
+            codigo: me.codigo,
+            tipoMoneda: me.tipoMoneda,
+            montoTotal: me.montoTotal,
+            retencionIr: me.retencionIr,
+            montoNeto: me.montoNeto,
+            tipoServicio: me.tipoServicio,
+            observacion: me.observacion,
+            fechaEmision: me.fechaEmision,
+            fechaVencimiento: me.fechaVencimiento,
+            emisor: me.emisor,
+            cliente: me.cliente,
           })
           .then(function(response) {
             me.close();

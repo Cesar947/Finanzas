@@ -36,8 +36,13 @@ public class EmisorServiceImpl implements EmisorService{
 	}
 
 	@Override
-	public Integer verificarEmisor(String name, String contraseña) {
-		return emisorRepository.verificarEmisor(name, contraseña);
+	public Integer verificarEmisor(String name, String contraseña, String RUC) {
+		return emisorRepository.verificarEmisor(name, contraseña, RUC);
+	}
+
+	@Override
+	public Integer verificarEmisorDNI(String name, String contraseña, int DNI) {
+		return emisorRepository.verificarEmisorDNI(name, contraseña, DNI);
 	}
 
 

@@ -28,7 +28,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/recibos',
+      path: '/recibos/:emisorId',
       name: 'recibos',
       component: MisRecibos
     }

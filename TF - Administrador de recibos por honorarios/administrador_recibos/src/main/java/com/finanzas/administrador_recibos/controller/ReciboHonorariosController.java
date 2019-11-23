@@ -23,10 +23,11 @@ public class ReciboHonorariosController  {
 		this.reciboporhonorarioservice = reciboporhonorarioservice;
 	}
 	
-	@RequestMapping(path = "/registro", method = RequestMethod.POST)
-	public ReciboHonorarios RegistrarReciboPorHonorario(@RequestBody ReciboHonorarios recibohonorario) throws Exception{
-		return reciboporhonorarioservice.registrarReciboPorHonorarios(recibohonorario);
-		
+	@RequestMapping(path = "/registro/{emisorId}/{clienteId}", method = RequestMethod.POST)
+	public ReciboHonorarios RegistrarReciboPorHonorario(@RequestBody ReciboHonorarios recibohonorario,
+			@PathVariable Integer emisorId) throws Exception{
+		return reciboporhonorarioservice.registrarReciboPorHonorarios(recibohonorario, emisorId, clienteId);
+
 	}
 	
 	@RequestMapping(path = "/emisor/{emisorId}",method = RequestMethod.GET)

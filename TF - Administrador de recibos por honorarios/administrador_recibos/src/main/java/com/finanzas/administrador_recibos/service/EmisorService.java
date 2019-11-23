@@ -9,7 +9,9 @@ public interface EmisorService {
 	
 	public List<Emisor> listarEmisores() throws Exception;
 	
-	public Integer verificarEmisor(String name, String contrasena);
+	public Integer verificarEmisor(String name, String contrasena, String RUC);
+	
+	public Integer verificarEmisorDNI(String name, String contrasena, int dni);
 	
 	
 }

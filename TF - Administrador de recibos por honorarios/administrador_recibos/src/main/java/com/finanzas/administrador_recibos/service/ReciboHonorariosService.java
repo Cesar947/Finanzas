@@ -8,7 +8,8 @@ public interface ReciboHonorariosService {
 	
 	public List<ReciboHonorarios> listarTodo();	
 	
-	public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo) throws Exception;
+	public ReciboHonorarios registrarReciboPorHonorarios(ReciboHonorarios recibo, Integer emisorId
+    		, Integer clienteId) throws Exception;
 	
 	public ReciboHonorarios EncontrarPorID(String reciboId);
  

@@ -16,7 +16,10 @@ public interface EmisorRepository extends JpaRepository <Emisor, Integer> {
 	
 	public int buscarNombreEmisor(@Param("nombres") String nombres);
 
-	@Query("select e.id from Emisor e where e.nombreUsuario = :name and e.contrasena = :contraseña")
-	public Integer verificarEmisor(@Param("name")String name,@Param("contraseña")String contrasena);
+	@Query("select e.id from Emisor e where e.nombreUsuario = :name and e.contrasena = :contraseña and e.ruc = :RUC")
+	public Integer verificarEmisor(@Param("name")String name,@Param("contraseña")String contrasena, @Param("RUC") String RUC);
+	
+	@Query("select e.id from Emisor e where e.nombreUsuario = :name and e.contrasena = :contraseña and e.dni = :DNI")
+	public Integer verificarEmisorDNI(@Param("name")String name,@Param("contraseña")String contrasena, @Param("DNI") int DNI);
 	
 }

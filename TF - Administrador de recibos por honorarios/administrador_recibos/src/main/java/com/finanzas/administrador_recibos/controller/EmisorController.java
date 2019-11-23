@@ -33,9 +33,20 @@ public class EmisorController {
 		return emisorService.listarEmisores();
 	}
 	
-	@RequestMapping(path = "/iniciarsesion", method = RequestMethod.GET)
-	public Integer verificarEmisor(@RequestParam(name = "usuario", required = true) String name, 
-			@RequestParam(name = "contraseña", required = true) String contraseña) {
-		return emisorService.verificarEmisor(name, contraseña);
+	@RequestMapping(path = "/iniciarRUC", method = RequestMethod.GET)
+	public Integer verificarEmisorPorRuc(@RequestParam(name = "usuario", required = true) String name, 
+			@RequestParam(name = "contraseña", required = true) String contraseña,
+			@RequestParam(name = "ruc", required = true) String ruc) {
+		return emisorService.verificarEmisor(name, contraseña, ruc);
 	}
+	
+	@RequestMapping(path = "/iniciarDNI", method = RequestMethod.GET)
+	public Integer verificarEmisorPorDNI(@RequestParam(name = "usuario", required = true) String name, 
+			@RequestParam(name = "contraseña", required = true) String contraseña,
+			@RequestParam(name = "DNI", required = true) int DNI) {
+		return emisorService.verificarEmisorDNI(name, contraseña, DNI);
+	}
+	
+	
+	
 }
