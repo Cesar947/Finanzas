@@ -194,16 +194,17 @@ public class ResultadoFactoringServiceImpl implements ResultadoFactoringService 
 	     double tceaTotal = HallarTCEATotalDeCartera(listaDetalles, rf.getMontoTotalRecibido());
 	     rf.setTceaTotal(tceaTotal);
 	     
-	     DetalleFactoring x = listaDetalles.get(0);
+	     ResultadoFactoring factRes = resFactRepo.save(rf);
 	     
-	     for(int i = 0; i < 1; i++) {
+	     for(int i = 0; i < recibos.size(); i++) {
 	    	 listaDetalles.get(i).setResultadoFactoring(rf);
-	    	 detalleFactoringRepository.save(listaDetalles.get(0));
+	    	  DetalleFactoring x = listaDetalles.get(i);
+	    	 detalleFactoringRepository.save(x);
 	     }
 	     
+	     return factRes;
 	     
-	     
-	    return resFactRepo.save(rf);
+	  
 	     
 	 
 	        

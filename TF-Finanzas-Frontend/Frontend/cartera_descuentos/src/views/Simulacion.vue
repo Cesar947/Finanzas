@@ -117,26 +117,22 @@
         </v-dialog>
 
       </v-toolbar>
-      <v-data-table :headers="headers" :items="recibos" :search="search" class="elevation-1">
+      <v-data-table :headers="headers" :items="detalles" :search="search" class="elevation-1">
         <template slot="items" slot-scope="props">
-          <td class="justify-center layout px-0">
+         <!-- <td class="justify-center layout px-0">
             <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
-          </td>
+          </td>-->
               
-          <td style=".ckbox">
-             <v-checkbox v-model="seleccionado" > </v-checkbox>
-          </td>
-          <td>{{ props.item.id }}</td>
-          <td>{{props.item.emisor.nombres + props.item.emisor.apellidos}}</td>
-          <td>{{props.item.cliente.nombre}}</td>
-          <td>{{ props.item.tipoMoneda }}</td>
-          <td>{{ props.item.montoHonorarios}}</td>
-          <td>{{ props.item.retencionIR }}</td>
-          <td>{{ props.item.montoNeto }}</td>
-           <td>{{ props.item.tipoServicio }}</td>
-            <td>{{ props.item.observacion }}</td>
-            <td>{{ props.item.fechaEmision }}</td>
-            <td>{{ props.item.fechaVencimiento}}</td>
+         
+           <td>{{ props.item.reciboHonorarios.id }}</td>
+          <td>{{props.item.reciboHonorarios.montoNeto}}</td>
+          <td>{{props.item.numeroPeriodoDias}}</td>
+          <td>{{ props.item.porcentajeTasaDescontada }}</td>
+          <td>{{ props.item.montoDescontado}}</td>
+          <td>{{ props.item.montoValorNeto }}</td>
+          <td>{{ props.item.montoValorRecibido }}</td>
+           <td>{{ props.item.montoValorEntregado }}</td>
+            <td>{{ props.item.tcea }}</td>
 
         
          
@@ -154,7 +150,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      recibos: [],
+      detalles: [],
       dialog: false,
       headers: [
         { text: "Codigo", value: "campos", sortable: false },
@@ -219,7 +215,7 @@ export default {
         .get("/detallefactoring?factId=" + factId)
         .then(function(response) {
           //
-          me.recibos = response.data;
+          me.detalles = response.data;
          
 
         })
@@ -233,7 +229,7 @@ export default {
 
 
 
-    
+    /*
     editItem(item) {
       this.id = item.id;
       this.nombres = item.nombres;
@@ -301,7 +297,7 @@ export default {
             console.log(error);
           });
       }
-    }
+    }*/
   }
 };
 </script>
